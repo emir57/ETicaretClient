@@ -9,6 +9,8 @@ import { LayoutModule } from './layout/layout.module';
   imports: [
     CommonModule,
     LayoutModule
+  ],exports:[
+    LayoutModule
   ]
 })
 export class AdminModule { }

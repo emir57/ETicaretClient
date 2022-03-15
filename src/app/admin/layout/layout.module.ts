@@ -13,6 +13,9 @@ import { HeaderComponent } from './components/header/header.component';
   imports: [
     CommonModule,
     ComponentsModule
+  ],
+  exports:[
+    LayoutComponent
   ]
 })
 export class LayoutModule { }
