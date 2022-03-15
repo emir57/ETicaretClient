@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.16.
 <br>
-<a href="https://github.com/emir57/ETicaretAPI">API</a>
+<a href="https://github.com/emir57/ETicaretAPI">Go the API</a>
 
 ## Development server
 
