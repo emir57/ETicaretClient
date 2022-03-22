@@ -4,6 +4,7 @@ import { LayoutComponent } from '../layout/layout.component';
 import { ComponentsModule } from './components/components.module';
 import { HeaderComponent } from './components/header/header.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
   imports: [
     CommonModule,
     ComponentsModule,
+    RouterModule,
     MatSidenavModule
   ],
   exports:[
