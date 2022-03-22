@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LayoutComponent } from '../layout/layout.component';
 import { ComponentsModule } from './components/components.module';
 import { HeaderComponent } from './components/header/header.component';
-
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 
 @NgModule({
@@ -12,7 +12,8 @@ import { HeaderComponent } from './components/header/header.component';
   ],
   imports: [
     CommonModule,
-    ComponentsModule
+    ComponentsModule,
+    MatSidenavModule
   ],
   exports:[
     LayoutComponent
