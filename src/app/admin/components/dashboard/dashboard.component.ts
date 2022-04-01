@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertifyService, MessageType, Position } from 'src/app/services/admin/alertify.service';
+import { AlertifyOptions, AlertifyService, MessageType, Position } from 'src/app/services/admin/alertify.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit {
   }
 
   message() {
-    this.alertifyService.message("Mesaj", MessageType.Success, true, 2, Position.BottomRight);
+    this.alertifyService.message("Mesaj", { messageType: MessageType.Error });
   }
   dismiss() {
     this.alertifyService.dismiss();
