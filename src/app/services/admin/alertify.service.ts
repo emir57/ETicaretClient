@@ -8,7 +8,8 @@ export class AlertifyService {
 
   constructor() { }
 
-  message(message: string, messageType: MessageType) {
+  message(message: string, messageType: MessageType, position: Position = Position.BottomRight) {
+    alertify.set("notifier", "position", position);
     // alertify[messageType](message);
     alertify.notify(message, messageType);
   }
