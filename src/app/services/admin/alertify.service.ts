@@ -24,7 +24,7 @@ export class AlertifyService {
 }
 export class AlertifyOptions {
   message!: string;
-  messageType!: MessageType;
+  messageType: MessageType = MessageType.Info;
   position: Position = Position.BottomRight;
   delay: number = 2;
   dismissOthers: boolean = false;
