@@ -9,7 +9,14 @@ export class AlertifyService {
   constructor() { }
 
   message(message: string) {
-
+    alertify
   }
 
+}
+
+export enum MessageType {
+  Error = "error",
+  Success = "success",
+  Info = "info",
+  Warning = "warning"
 }
