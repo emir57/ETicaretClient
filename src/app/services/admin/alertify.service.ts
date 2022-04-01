@@ -11,7 +11,11 @@ export class AlertifyService {
   message(message: string, messageType: MessageType, delay: number = 2, position: Position = Position.BottomRight) {
     alertify.set("notifier", "position", position);
     // alertify[messageType](message);
-    alertify.notify(message, messageType,delay);
+    alertify.notify(message, messageType, delay);
+  }
+
+  dismiss() {
+    alertify.dismiss();
   }
 
 }
