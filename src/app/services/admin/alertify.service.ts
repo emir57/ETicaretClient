@@ -15,7 +15,7 @@ export class AlertifyService {
   }
 
   dismiss() {
-    alertify.dismiss();
+    alertify.dismissAll();
   }
 
 }
