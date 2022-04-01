@@ -8,11 +8,11 @@ export class AlertifyService {
 
   constructor() { }
 
-  message(message: string, messageType: MessageType, dismissOthers: boolean = false, delay: number = 2, position: Position = Position.BottomRight) {
-    alertify.set("notifier", "position", position);
+  message(message: string, options: AlertifyOptions) {
+    alertify.set("notifier", "position", options.position);
     // alertify[messageType](message);
-    const notify = alertify.notify(message, messageType, delay);
-    if (dismissOthers) {
+    const notify = alertify.notify(message, options.messageType, options.delay);
+    if (options.dismissOthers) {
       notify.dismissOthers();
     }
   }
@@ -23,7 +23,6 @@ export class AlertifyService {
 
 }
 export class AlertifyOptions {
-  message!: string;
   messageType: MessageType = MessageType.Info;
   position: Position = Position.BottomRight;
   delay: number = 2;
