@@ -16,5 +16,8 @@ export class DashboardComponent implements OnInit {
   message() {
     this.alertifyService.message("Mesaj", MessageType.Success);
   }
+  dismiss(){
+    this.alertifyService.dismiss();
+  }
 
 }
