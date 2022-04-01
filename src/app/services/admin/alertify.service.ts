@@ -8,7 +8,7 @@ export class AlertifyService {
 
   constructor() { }
 
-  message(message: string, messageType: MessageType, delay: number = 2, position: Position = Position.BottomRight, dismissOthers: boolean = false) {
+  message(message: string, messageType: MessageType, dismissOthers: boolean = false, delay: number = 2, position: Position = Position.BottomRight) {
     alertify.set("notifier", "position", position);
     // alertify[messageType](message);
     const notify = alertify.notify(message, messageType, delay);
