@@ -9,6 +9,7 @@ export class AlertifyService {
   constructor() { }
 
   message(message: string, messageType: MessageType) {
+    // alertify[messageType](message);
     alertify.notify(message, messageType);
   }
 

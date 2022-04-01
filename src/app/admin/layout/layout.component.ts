@@ -11,7 +11,7 @@ export class LayoutComponent implements OnInit {
   constructor(private alertifyService:AlertifyService) { }
 
   ngOnInit(): void {
-    this.alertifyService.message("deneme",MessageType.Success)
+    this.alertifyService.message("deneme",MessageType.Error)
   }
 
 }
