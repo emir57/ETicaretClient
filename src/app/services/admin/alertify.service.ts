@@ -8,8 +8,8 @@ export class AlertifyService {
 
   constructor() { }
 
-  message(message: string) {
-    alertify
+  message(message: string, messageType: MessageType) {
+    alertify.notify(message, messageType);
   }
 
 }
