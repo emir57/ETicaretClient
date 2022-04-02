@@ -9,7 +9,7 @@ export class CustomToastrService {
   constructor(private toastrService: ToastrService) { }
 
   message(message: string, title: string, messageType: ToastrMessageType, position: ToastrPosition) {
-    this.toastrService[messageType](message, title);
+    this.toastrService[messageType](message, title, { positionClass: position });
   }
 }
 
