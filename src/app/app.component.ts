@@ -9,6 +9,6 @@ declare var $: any;
 export class AppComponent {
   title = 'ETicaretClient';
   constructor(toastrService: ToastrService) {
-    toastrService.success("Başarılı", "İşlem Başarılı")
+    toastrService.error("Başarılı", "İşlem Başarılı")
   }
 }
