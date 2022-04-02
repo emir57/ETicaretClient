@@ -6,5 +6,16 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CustomToastrService {
 
-  constructor(toastrService:ToastrService) { }
+  constructor(private toastrService: ToastrService) { }
+
+  message(message: string, title: string) {
+    this.toastrService.
+  }
+}
+
+export enum ToastrMessageType {
+  Success = "success",
+  Error = "error",
+  Info = "info",
+  Warning = "warning"
 }
