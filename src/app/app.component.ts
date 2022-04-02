@@ -10,6 +10,6 @@ declare var $: any;
 export class AppComponent {
   title = 'ETicaretClient';
   constructor(private customTostrService: CustomToastrService) {
-    customTostrService.message("Başarıyla Sipariş Oluşturuldu", "İşlem Başarılı", ToastrMessageType.Success,ToastrPosition.BottomFullWidth)
+    customTostrService.message("Başarıyla Sipariş Oluşturuldu", "İşlem Başarılı", ToastrMessageType.Success,ToastrPosition.BottomRight)
   }
 }
