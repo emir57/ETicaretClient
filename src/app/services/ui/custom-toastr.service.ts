@@ -25,8 +25,8 @@ export enum ToastrPosition {
   TopLeft = "toast-top-left",
   BottomRight = "toast-bottom-right",
   BottomLeft = "toast-bottom-left",
-  TopFullWidth = "toast-top-full",
-  BottomFullWidth = "toast-bottom-full",
+  TopFullWidth = "toast-top-full-width",
+  BottomFullWidth = "toast-bottom-full-width",
   TopCenter = "toast-top-center",
   BottomCenter = "toast-bottom-center",
 }
