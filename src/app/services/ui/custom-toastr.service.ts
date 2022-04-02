@@ -8,8 +8,8 @@ export class CustomToastrService {
 
   constructor(private toastrService: ToastrService) { }
 
-  message(message: string, title: string) {
-    this.toastrService.
+  message(message: string, title: string, messageType: ToastrMessageType) {
+    this.toastrService[messageType](message, title);
   }
 }
 
