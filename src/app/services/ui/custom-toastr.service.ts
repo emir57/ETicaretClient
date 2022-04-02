@@ -19,3 +19,14 @@ export enum ToastrMessageType {
   Info = "info",
   Warning = "warning"
 }
+
+export enum ToastrPosition{
+  TopRight,
+  TopLeft,
+  BottomRight,
+  BottomLeft,
+  TopFullWidth,
+  BottomFullWidth,
+  TopCenter,
+  BottomCenter,
+}
