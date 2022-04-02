@@ -13,6 +13,11 @@ export class CustomToastrService {
   }
 }
 
+export class ToastrOptions {
+  messageType: ToastrMessageType = ToastrMessageType.Info;
+  position: ToastrPosition = ToastrPosition.BottomRight;
+}
+
 export enum ToastrMessageType {
   Success = "success",
   Error = "error",
