@@ -10,14 +10,16 @@ export class CustomToastrService {
 
   message(message: string, title: string, toastrOptions: Partial<ToastrOptions>) {
     let type: ToastrMessageType = toastrOptions.messageType as ToastrMessageType;
-    let position:ToastrPosition = toastrOptions.position as ToastrPosition;
+    let position: string = ToastrPosition.BottomRight;
+    if (toastrOptions.position)
+      position = toastrOptions.position as ToastrPosition;
     this.toastrService[type](message, title, { positionClass: position });
   }
 }
 
 export class ToastrOptions {
-  messageType: ToastrMessageType = ToastrMessageType.Info;
-  position: ToastrPosition = ToastrPosition.BottomRight;
+  messageType!: ToastrMessageType;
+  position!: ToastrPosition;
 }
 
 export enum ToastrMessageType {
