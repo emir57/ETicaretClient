@@ -11,9 +11,9 @@ declare var $: any;
 export class AppComponent {
   title = 'ETicaretClient';
   constructor(private customToastrService: CustomToastrService,private ngxSpinnerService:NgxSpinnerService) {
-    this.ngxSpinnerService.show();
+    this.ngxSpinnerService.show("s2");
     setTimeout(() => {
-      this.ngxSpinnerService.hide();
+      this.ngxSpinnerService.hide("s2");
     }, 2000);
   }
 }
