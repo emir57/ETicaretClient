@@ -15,5 +15,6 @@ export class BaseComponent {
 
 export enum SpinnerType {
   BallAtom = "s1",
-  BallPulseAsync = "s2"
+  BallPulseAsync = "s2",
+  BallSpinClockwise = "s3"
 }
