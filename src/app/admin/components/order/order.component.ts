@@ -12,7 +12,7 @@ export class OrderComponent extends BaseComponent implements OnInit {
   constructor(public spinner: NgxSpinnerService) { super(spinner) }
 
   ngOnInit(): void {
-    this.showSpinner(SpinnerType.BallSpinClockwise, 500)
+    this.showSpinner(SpinnerType.BallSpinClockwise)
   }
 
 }
