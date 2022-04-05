@@ -11,3 +11,9 @@ export class BaseComponent {
     this.spinner.show(name)
   }
 }
+
+
+export enum SpinnerType {
+  BallAtom = "s1",
+  BallPulseAsync = "s2"
+}
