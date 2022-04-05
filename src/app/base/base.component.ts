@@ -7,7 +7,7 @@ export class BaseComponent {
    */
   constructor(private spinner: NgxSpinnerService) { }
 
-  showSpinner(name: string) {
+  showSpinner(name: SpinnerType) {
     this.spinner.show(name)
   }
 }
