@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { CustomToastrService, ToastrMessageType, ToastrPosition } from './services/ui/custom-toastr.service';
 declare var $: any;
@@ -9,7 +10,7 @@ declare var $: any;
 })
 export class AppComponent {
   title = 'ETicaretClient';
-  constructor(private customToastrService: CustomToastrService) {
-    this.customToastrService.message("Başarıyla Sipariş Oluşturuldu", "İşlem Başarılı", { messageType: ToastrMessageType.Success})
+  constructor(private customToastrService: CustomToastrService,private ngxSpinnerService:NgxSpinnerService) {
+    this.ngxSpinnerService.show();
   }
 }
