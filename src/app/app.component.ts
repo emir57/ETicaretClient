@@ -12,5 +12,8 @@ export class AppComponent {
   title = 'ETicaretClient';
   constructor(private customToastrService: CustomToastrService,private ngxSpinnerService:NgxSpinnerService) {
     this.ngxSpinnerService.show();
+    setTimeout(() => {
+      this.ngxSpinnerService.hide();
+    }, 2000);
   }
 }
