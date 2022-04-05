@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { UiModule } from './ui/ui.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       positionClass: "toast-bottom-right"
-    })
+    }),
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
