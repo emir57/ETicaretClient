@@ -10,7 +10,7 @@ declare var $: any;
 })
 export class AppComponent {
   title = 'ETicaretClient';
-  constructor(private customToastrService: CustomToastrService,private ngxSpinnerService:NgxSpinnerService) {
+  constructor() {
 
   }
 }
