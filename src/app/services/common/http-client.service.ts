@@ -17,8 +17,12 @@ export class HttpClientService {
 
   get<T>(requestParameter: Partial<RequestParameters>) {
     let url: string = "";
+    if (requestParameter.fullEndPoint) {
+      url = `${this.url(requestParameter)}`
+    }else{
+      url = `${this.url(requestParameter)}`
+    }
 
-    url = `${this.url(requestParameter)}`
   }
   post() {
 
