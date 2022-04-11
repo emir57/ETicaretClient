@@ -20,7 +20,7 @@ export class HttpClientService {
     if (requestParameter.fullEndPoint) {
       url = requestParameter.fullEndPoint;
     } else {
-      url = `${this.url(requestParameter)}`;
+      url = `${this.url(requestParameter)}${id ? "?id=" + id : ""}`;
     }
 
   }
