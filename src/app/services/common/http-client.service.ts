@@ -7,7 +7,7 @@ export class HttpClientService {
 
   constructor(private httpClient: HttpClient) { }
 
-  get() {
+  get<T>() {
 
   }
   post() {
