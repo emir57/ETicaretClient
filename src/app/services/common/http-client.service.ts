@@ -8,7 +8,7 @@ export class HttpClientService {
   constructor(private httpClient: HttpClient,
     @Inject("baseUrl") private baseUrl: string) { }
 
-  get<T>(requestParameter: RequestParameters) {
+  get<T>(requestParameter: Partial<RequestParameters>) {
     let url: string = "";
 
     url = `${this.baseUrl}/${controller}/${action}`
