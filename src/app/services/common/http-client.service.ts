@@ -1,5 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,14 +16,14 @@ export class HttpClientService {
               ${requestParameter.action ? "/" + requestParameter.action : ""}`;
   }
 
-  get<T>(requestParameter: Partial<RequestParameters>, id?: string) {
+  get<T>(requestParameter: Partial<RequestParameters>, id?: string) : Observable<T> {
     let url: string = "";
     if (requestParameter.fullEndPoint) {
       url = requestParameter.fullEndPoint;
     } else {
       url = `${this.url(requestParameter)}${id ? "?id=" + id : ""}`;
     }
-
+    return this.httpClient.get<T>(url, { headers: requestParameter.headers })
   }
 
   post() {
