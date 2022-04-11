@@ -8,6 +8,10 @@ export class HttpClientService {
   constructor(private httpClient: HttpClient,
     @Inject("baseUrl") private baseUrl: string) { }
 
+  private url(requestParameter: Partial<RequestParameters>): String {
+    return
+  }
+
   get<T>(requestParameter: Partial<RequestParameters>) {
     let url: string = "";
 
