@@ -20,11 +20,11 @@ export class ProductsComponent extends BaseComponent implements OnInit {
       controller: "products",
       action: "getall"
     }).subscribe(response => console.log(response))
-    this.httpClientService.post({
-      controller: "products",
-      action: "add"
-    }, { name: "Kalem", stock: 100, price: 16 })
-      .subscribe(response => console.log(response))
+    // this.httpClientService.post({
+    //   controller: "products",
+    //   action: "add"
+    // }, { name: "Kalem", stock: 100, price: 16 })
+    //   .subscribe(response => console.log(response))
   }
 
 }
