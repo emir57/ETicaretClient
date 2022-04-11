@@ -18,7 +18,8 @@ export class ProductsComponent extends BaseComponent implements OnInit {
     this.showSpinner(SpinnerType.BallSpinClockwise);
     this.httpClientService.get({
       controller: "products",
-      action: "getall"
+      action: "getall",
+      fullEndPoint:"https://jsonplaceholder.typicode.com/posts"
     }).subscribe(response => console.log(response))
 
     // this.httpClientService.delete({
