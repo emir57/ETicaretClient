@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 @Injectable({
   providedIn: 'root'
 })
@@ -22,4 +22,12 @@ export class HttpClientService {
   delete() {
 
   }
+}
+
+export class RequestParameters {
+  controller?: string;
+  action?: string;
+  headers?: HttpHeaders;
+  baseUrl?: string;
+  fullEndPoint?: string;
 }
