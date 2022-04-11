@@ -6,4 +6,17 @@ import { HttpClient } from "@angular/common/http";
 export class HttpClientService {
 
   constructor(private httpClient: HttpClient) { }
+
+  get() {
+
+  }
+  post() {
+
+  }
+  put() {
+
+  }
+  delete() {
+
+  }
 }
