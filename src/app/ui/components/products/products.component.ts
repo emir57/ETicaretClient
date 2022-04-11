@@ -21,7 +21,7 @@ export class ProductsComponent extends BaseComponent implements OnInit {
       controller: "products",
       action: "getall",
       //fullEndPoint:"https://jsonplaceholder.typicode.com/posts"
-    }).subscribe(response => console.log(response))
+    }).subscribe(response => console.table(response))
 
     // this.httpClientService.delete({
     //   controller: "products",
