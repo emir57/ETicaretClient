@@ -15,14 +15,13 @@ export class HttpClientService {
               ${requestParameter.action ? `/${requestParameter.action}` : ""}`
   }
 
-  get<T>(requestParameter: Partial<RequestParameters>) {
+  get<T>(requestParameter: Partial<RequestParameters>, id?: string) {
     let url: string = "";
     if (requestParameter.fullEndPoint) {
-      url = `${this.url(requestParameter)}`
-    }else{
-      url = `${this.url(requestParameter)}`
+      url = requestParameter.fullEndPoint;
+    } else {
+      url = `${this.url(requestParameter)}`;
     }
-
   }
   post() {
 
