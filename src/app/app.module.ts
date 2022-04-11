@@ -26,7 +26,7 @@ import { BaseComponent } from './base/base.component';
     NgxSpinnerModule
   ],
   providers: [
-    { provide: "baseUrl", useValue: "https://localhost:44392/api/" },
+    { provide: "baseUrl", useValue: "https://localhost:44392/api", multi: true },
   ],
   bootstrap: [AppComponent]
 })
