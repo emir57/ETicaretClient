@@ -33,7 +33,7 @@ export class HttpClientService {
     }
     return this.httpClient.post<T>(url, body, { headers: requestParameter.headers });
   }
-  put() {
+  put<T>(requestParameter: Partial<RequestParameters>, body: Partial<T>): Observable<T> {
 
   }
   delete() {
