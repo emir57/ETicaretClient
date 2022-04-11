@@ -24,6 +24,7 @@ export class ProductsComponent extends BaseComponent implements OnInit {
       controller: "products",
       action: "add"
     }, { name: "Kalem", stock: 100, price: 16 })
+      .subscribe(response => console.log(response))
   }
 
 }
