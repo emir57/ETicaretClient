@@ -31,7 +31,7 @@ export class HttpClientService {
     } else {
       url = `${this.url(requestParameter)}`;
     }
-    this.httpClient.post<T>(url, body,);
+    this.httpClient.post<T>(url, body, { headers: requestParameter.headers });
   }
   put() {
 
