@@ -20,10 +20,11 @@ export class ProductsComponent extends BaseComponent implements OnInit {
       controller: "products",
       action: "getall"
     }).subscribe(response => console.log(response))
-    // this.httpClientService.put({
+
+    // this.httpClientService.delete({
     //   controller: "products",
-    //   action: "update"
-    // }, { id:"08da1bc7-1641-42a2-8b90-579866e23166",name: "Kalem 2", stock: 100, price: 16 })
+    //   action: "delete"
+    // }, "08da1bc7-1641-42a2-8b90-579866e23166")
     //   .subscribe(response => console.log(response))
   }
 
