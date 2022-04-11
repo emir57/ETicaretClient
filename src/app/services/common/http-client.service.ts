@@ -34,7 +34,12 @@ export class HttpClientService {
     return this.httpClient.post<T>(url, body, { headers: requestParameter.headers });
   }
   put<T>(requestParameter: Partial<RequestParameters>, body: Partial<T>): Observable<T> {
-
+    let url: String = "";
+    if (requestParameter.fullEndPoint) {
+      url = requestParameter.fullEndPoint;
+    } else {
+      url = `${this.url(requestParameter)}`;
+    }
   }
   delete() {
 
