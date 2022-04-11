@@ -18,8 +18,12 @@ export class ProductsComponent extends BaseComponent implements OnInit {
     this.showSpinner(SpinnerType.BallSpinClockwise);
     this.httpClientService.get({
       controller: "products",
-      action:"getall"
-    }).subscribe(response=>console.log(response))
+      action: "getall"
+    }).subscribe(response => console.log(response))
+    this.httpClientService.post({
+      controller: "products",
+      action: "add"
+    }, { name: "Kalem", stock: 100, price: 16 })
   }
 
 }
