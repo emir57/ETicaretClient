@@ -24,14 +24,14 @@ export class HttpClientService {
     return this.httpClient.get<T>(url, { headers: requestParameter.headers })
   }
 
-  post<T>(requestParameter: Partial<RequestParameters>) {
+  post<T>(requestParameter: Partial<RequestParameters>, body: Partial<T>) {
     let url: string = "";
     if (requestParameter.fullEndPoint) {
       url = requestParameter.fullEndPoint;
     } else {
       url = `${this.url(requestParameter)}`;
     }
-    this.httpClient.post<T>(url);
+    this.httpClient.post<T>(url, body,);
   }
   put() {
 
