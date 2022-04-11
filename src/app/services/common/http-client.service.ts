@@ -12,7 +12,7 @@ export class HttpClientService {
     return `${requestParameter.baseUrl ?
       requestParameter.baseUrl : this.baseUrl}/
               ${requestParameter.controller}
-              ${requestParameter.action ? `/${requestParameter.action}` : ""}`
+              ${requestParameter.action ? "/" + requestParameter.action : ""}`;
   }
 
   get<T>(requestParameter: Partial<RequestParameters>, id?: string) {
@@ -22,7 +22,9 @@ export class HttpClientService {
     } else {
       url = `${this.url(requestParameter)}`;
     }
+
   }
+
   post() {
 
   }
