@@ -14,7 +14,7 @@ export class HttpClientService {
       requestParameter.baseUrl : this.baseUrl}/${requestParameter.controller}${requestParameter.action ? "/" + requestParameter.action : ""}`;
   }
 
-  get<T>(requestParameter: Partial<RequestParameters>, id?: string) : Observable<T> {
+  get<T>(requestParameter: Partial<RequestParameters>, id?: string): Observable<T> {
     let url: string = "";
     if (requestParameter.fullEndPoint) {
       url = requestParameter.fullEndPoint;
@@ -24,8 +24,14 @@ export class HttpClientService {
     return this.httpClient.get<T>(url, { headers: requestParameter.headers })
   }
 
-  post() {
-
+  post<T>(requestParameter: Partial<RequestParameters>) {
+    let url: string = "";
+    if (requestParameter.fullEndPoint) {
+      url = requestParameter.fullEndPoint;
+    } else {
+      url = `${this.url(requestParameter)}`;
+    }
+    this.httpClient.post<T>(url);
   }
   put() {
 
