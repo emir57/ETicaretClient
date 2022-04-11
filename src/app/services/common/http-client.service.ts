@@ -9,13 +9,16 @@ export class HttpClientService {
     @Inject("baseUrl") private baseUrl: string) { }
 
   private url(requestParameter: Partial<RequestParameters>): String {
-    return
+    return `${requestParameter.baseUrl ?
+      requestParameter.baseUrl : this.baseUrl}/
+              ${requestParameter.controller}
+              ${requestParameter.action ? `/${requestParameter.action}` : ""}`
   }
 
   get<T>(requestParameter: Partial<RequestParameters>) {
     let url: string = "";
 
-    url = `${this.baseUrl}/${controller}/${action}`
+    url = `${this.url(requestParameter)}`
   }
   post() {
 
