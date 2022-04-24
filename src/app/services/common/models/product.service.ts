@@ -12,7 +12,7 @@ export class ProductService {
     private httpClientService: HttpClientService
   ) { }
 
-  createProduct(product: Create_Product, successCallBack?: any) {
+  createProduct(product: Create_Product, successCallBack?: any, errorCallBack?: (errorMessage: string) => void) {
     this.httpClientService.post({
       controller: "products",
       action: "add",
@@ -20,8 +20,16 @@ export class ProductService {
       successCallBack();
       alert("başarılı");
     }, (errorResponse: HttpErrorResponse) => {
-      const _error: Array<{key: string, value: Array<string>}> = errorResponse.error;
-
+      const _error: Array<{ key: string, value: Array<string> }> = errorResponse.error;
+      let message = "";
+      _error.forEach((v, index) => {
+        v.value.forEach((_v, _index) => {
+          message += `${_v}<br>`;
+        })
+      });
+      if (errorCallBack) {
+        errorCallBack(message);
+      }
     })
   }
 }
