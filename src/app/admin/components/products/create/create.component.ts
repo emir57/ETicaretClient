@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { BaseComponent } from 'src/app/base/base.component';
+import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
 import { Create_Product } from 'src/app/contracts/create_product';
 import { ProductService } from 'src/app/services/common/models/product.service';
 
@@ -22,6 +22,7 @@ export class CreateComponent extends BaseComponent implements OnInit {
   }
 
   create(name: HTMLInputElement, stock: HTMLInputElement, price: HTMLInputElement) {
+    this.showSpinner(SpinnerType.BallSpinClockwise);
     const create_product: Create_Product = new Create_Product();
     create_product.name = name.value;
     create_product.stock = +stock.value;
