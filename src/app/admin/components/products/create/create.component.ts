@@ -27,7 +27,9 @@ export class CreateComponent extends BaseComponent implements OnInit {
     create_product.name = name.value;
     create_product.stock = +stock.value;
     create_product.price = +price.value;
-    this.productService.createProduct(create_product);
+    this.productService.createProduct(create_product, () => {
+      this.hideSpinner(SpinnerType.BallSpinClockwise);
+    });
   }
 
 }
