@@ -9,4 +9,8 @@ export class ProductService {
   constructor(
     private httpClientService: HttpClientService
   ) { }
+
+  createProduct(){
+
+  }
 }
