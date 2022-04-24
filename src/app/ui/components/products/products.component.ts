@@ -16,18 +16,7 @@ export class ProductsComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.showSpinner(SpinnerType.BallSpinClockwise);
-    this.httpClientService.get<Create_Product[]>({
-      controller: "products",
-      action: "getall",
-      //fullEndPoint:"https://jsonplaceholder.typicode.com/posts"
-    }).subscribe(response => console.table(response))
 
-    // this.httpClientService.delete({
-    //   controller: "products",
-    //   action: "delete"
-    // }, "08da1bc7-1641-42a2-8b90-579866e23166")
-    //   .subscribe(response => console.log(response))
   }
 
 }
