@@ -15,4 +15,8 @@ export class CreateComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  create(name: HTMLInputElement, stock: HTMLInputElement, price: HTMLInputElement) {
+
+  }
+
 }
