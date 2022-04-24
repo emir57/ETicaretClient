@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Type } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
 import { Create_Product } from 'src/app/contracts/create_product';
+import { AlertifyService, MessageType, Position } from 'src/app/services/admin/alertify.service';
 import { ProductService } from 'src/app/services/common/models/product.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class CreateComponent extends BaseComponent implements OnInit {
 
   constructor(
     public spinner: NgxSpinnerService,
-    private productService: ProductService
+    private productService: ProductService,
+    private alertifyService: AlertifyService
   ) {
     super(spinner)
   }
@@ -29,6 +31,10 @@ export class CreateComponent extends BaseComponent implements OnInit {
     create_product.price = +price.value;
     this.productService.createProduct(create_product, () => {
       this.hideSpinner(SpinnerType.BallSpinClockwise);
+      this.alertifyService.message("Ürün başarıyla eklenmiştir.", {
+        messageType: MessageType.Success,
+        position: Position.TopRight
+      })
     });
   }
 
