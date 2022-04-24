@@ -36,7 +36,10 @@ export class CreateComponent extends BaseComponent implements OnInit {
         position: Position.TopRight
       })
     }, (errorMessage) => {
-      console.log(errorMessage)
+      this.alertifyService.message(errorMessage, {
+        messageType: MessageType.Error,
+        position: Position.TopRight
+      })
     });
   }
 
