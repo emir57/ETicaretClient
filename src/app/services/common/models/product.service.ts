@@ -20,10 +20,10 @@ export class ProductService {
       successCallBack();
       alert("başarılı");
     }, (errorResponse: HttpErrorResponse) => {
-      const _error: Array<{ key: string, value: Array<string> }> = errorResponse.error;
+      const _error: Array<{ Key: string, Value: Array<string> }> = errorResponse.error;
       let message = "";
       _error.forEach((v, index) => {
-        v.value.forEach((_v, _index) => {
+        v.Value.forEach((_v, _index) => {
           message += `${_v}<br>`;
         })
       });

@@ -35,6 +35,8 @@ export class CreateComponent extends BaseComponent implements OnInit {
         messageType: MessageType.Success,
         position: Position.TopRight
       })
+    }, (errorMessage) => {
+      console.log(errorMessage)
     });
   }
 
