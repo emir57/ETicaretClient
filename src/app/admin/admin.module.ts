@@ -4,6 +4,7 @@ import { LayoutModule } from './layout/layout.module';
 import { ComponentsModule } from './components/components.module';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 
 
@@ -12,7 +13,7 @@ import { BrowserModule } from '@angular/platform-browser';
   imports: [
     CommonModule,
     LayoutModule,
-    ComponentsModule
+    ComponentsModule,
   ],exports:[
     LayoutModule
   ]
