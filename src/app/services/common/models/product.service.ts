@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Create_Product } from 'src/app/contracts/create_product';
 import { HttpClientService } from '../http-client.service';
@@ -18,6 +19,9 @@ export class ProductService {
     }, product).subscribe(result => {
       successCallBack();
       alert("başarılı");
+    }, (errorResponse: HttpErrorResponse) => {
+      const _error: Array<{key: string, value: Array<string>}> = errorResponse.error;
+
     })
   }
 }
