@@ -4,6 +4,7 @@ import { ProductsComponent } from './products.component';
 import { RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { CreateComponent } from './create/create.component';
 import { ListComponent } from './list/list.component';
 
@@ -21,7 +22,8 @@ import { ListComponent } from './list/list.component';
       {path:"",component:ProductsComponent}
     ]),
     MatSidenavModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatInputModule
   ]
 })
 export class ProductsModule { }
