@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProductsComponent } from './products.component';
 import { RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 
@@ -16,6 +17,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
       {path:"",component:ProductsComponent}
     ]),
     MatSidenavModule,
+    MatFormFieldModule
   ]
 })
 export class ProductsModule { }
