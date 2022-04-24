@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Create_Product } from 'src/app/contracts/create_product';
 import { HttpClientService } from '../http-client.service';
 
 @Injectable({
@@ -10,7 +11,12 @@ export class ProductService {
     private httpClientService: HttpClientService
   ) { }
 
-  createProduct(){
-
+  createProduct(product: Create_Product) {
+    this.httpClientService.post({
+      controller: "products",
+      action: "add",
+    }, product).subscribe(result=>{
+      alert("başarılı");
+    })
   }
 }
