@@ -11,11 +11,12 @@ export class ProductService {
     private httpClientService: HttpClientService
   ) { }
 
-  createProduct(product: Create_Product) {
+  createProduct(product: Create_Product, successCallBack?: any) {
     this.httpClientService.post({
       controller: "products",
       action: "add",
-    }, product).subscribe(result=>{
+    }, product).subscribe(result => {
+      successCallBack();
       alert("başarılı");
     })
   }
