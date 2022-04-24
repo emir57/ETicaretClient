@@ -5,13 +5,15 @@ import { RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CreateComponent } from './create/create.component';
+import { ListComponent } from './list/list.component';
 
 
 
 @NgModule({
   declarations: [
     ProductsComponent,
-    CreateComponent
+    CreateComponent,
+    ListComponent
   ],
   imports: [
     CommonModule,
