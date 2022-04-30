@@ -24,7 +24,11 @@ export class ListComponent extends BaseComponent implements OnInit {
     super(spinner);
   }
 
-  async ngOnInit() {
+  ngOnInit() {
+    this.getProducts();
+  }
+
+  async getProducts() {
     this.showSpinner(SpinnerType.BallSpinClockwise);
     let allProducts: List_Product[] = await this.productService.read(
       (value) => {
@@ -36,6 +40,8 @@ export class ListComponent extends BaseComponent implements OnInit {
     this.dataSource = new MatTableDataSource<List_Product>(allProducts);
     this.dataSource.paginator = this.paginator;
   }
+
+
   getDate(dateString: string) {
     let date = new Date(dateString);
     return `${date.getDate()}.${date.getMonth()}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`
