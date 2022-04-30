@@ -19,7 +19,6 @@ export class ProductService {
       action: "add",
     }, product).subscribe(result => {
       successCallBack();
-      alert("başarılı");
     }, (errorResponse: HttpErrorResponse) => {
       const _error: Array<{ Key: string, Value: Array<string> }> = errorResponse.error;
       let message = "";
