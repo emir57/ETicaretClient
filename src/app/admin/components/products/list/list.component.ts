@@ -31,7 +31,8 @@ export class ListComponent extends BaseComponent implements OnInit {
   async getProducts() {
     this.showSpinner(SpinnerType.BallSpinClockwise);
     let allProducts: List_Product[] = await this.productService.read(
-      this.paginator.pageIndex, this.paginator.pageSize,
+      this.paginator ? this.paginator.pageIndex : 0,
+      this.paginator ? this.paginator.pageSize : 5,
       (value) => {
         this.hideSpinner(SpinnerType.BallSpinClockwise);
       },
