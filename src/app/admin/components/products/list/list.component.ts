@@ -29,6 +29,7 @@ export class ListComponent extends BaseComponent implements OnInit {
     this.productService.read(
       (value) => {
         this.hideSpinner(SpinnerType.BallSpinClockwise);
+        console.log(value);
       },
       (error) => {
         this.alertifyService.message(error, { messageType: MessageType.Error, position: Position.TopRight })
