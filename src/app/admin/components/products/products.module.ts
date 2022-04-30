@@ -8,7 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { CreateComponent } from './create/create.component';
 import { ListComponent } from './list/list.component';
-
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -20,12 +20,13 @@ import { ListComponent } from './list/list.component';
   imports: [
     CommonModule,
     RouterModule.forChild([
-      {path:"",component:ProductsComponent}
+      { path: "", component: ProductsComponent }
     ]),
     MatSidenavModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule
   ]
 })
 export class ProductsModule { }
