@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'product-list',
@@ -7,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
+  displayedColumns: string[] = ['name', 'stock', 'price', 'createdDate','updatedDate'];
   constructor() { }
 
   ngOnInit(): void {
