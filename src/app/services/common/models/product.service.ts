@@ -34,13 +34,13 @@ export class ProductService {
     })
   }
 
-  async read(successCallBack: (value: List_Product) => void, errorCallBack: (errorMessage: string) => void): Promise<List_Product[]> {
+  async read(successCallBack: (value: List_Product[]) => void, errorCallBack: (errorMessage: string) => void): Promise<List_Product[]> {
     const promiseData: Promise<List_Product[]> = this.httpClientService.get<List_Product[]>({
       controller: "products",
       action: "getall"
     }).toPromise();
-    promiseData.then()
-      .catch();
+    promiseData.then(d => successCallBack(d))
+      .catch((errorResponse: HttpErrorResponse) => errorCallBack(errorResponse.message));
     return await promiseData;
   }
 }
