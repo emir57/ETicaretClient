@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { BaseComponent } from 'src/app/base/base.component';
+import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
 import { List_Product } from 'src/app/contracts/list_product';
+import { AlertifyService } from 'src/app/services/admin/alertify.service';
 import { ProductService } from 'src/app/services/common/models/product.service';
 
 @Component({
@@ -17,16 +18,17 @@ export class ListComponent extends BaseComponent implements OnInit {
   dataSource: MatTableDataSource<List_Product> = new MatTableDataSource;
   constructor(
     public spinner: NgxSpinnerService,
-    private productService: ProductService
+    private productService: ProductService,
+    private alertifyService: AlertifyService
   ) {
     super(spinner);
   }
 
   ngOnInit(): void {
-    this
+    this.showSpinner(SpinnerType.BallSpinClockwise);
     this.productService.read(
       (value) => {
-
+        this.hideSpinner(SpinnerType.BallSpinClockwise);
       },
       (error) => {
 
