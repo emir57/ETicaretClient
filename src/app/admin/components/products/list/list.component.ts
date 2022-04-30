@@ -30,7 +30,7 @@ export class ListComponent extends BaseComponent implements OnInit {
 
   async getProducts() {
     this.showSpinner(SpinnerType.BallSpinClockwise);
-    let allProducts: List_Product[] = await this.productService.read(
+    let allProducts = await this.productService.read(
       this.paginator ? this.paginator.pageIndex : 0,
       this.paginator ? this.paginator.pageSize : 5,
       (value) => {
@@ -39,7 +39,7 @@ export class ListComponent extends BaseComponent implements OnInit {
       (error) => {
         this.alertifyService.message(error, { messageType: MessageType.Error, position: Position.TopRight })
       })
-    this.dataSource = new MatTableDataSource<List_Product>(allProducts);
+    this.dataSource = new MatTableDataSource<List_Product>(allProducts.products);
     this.dataSource.paginator = this.paginator;
   }
 
