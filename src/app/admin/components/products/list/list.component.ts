@@ -4,7 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
 import { List_Product } from 'src/app/contracts/list_product';
-import { AlertifyService } from 'src/app/services/admin/alertify.service';
+import { AlertifyService, MessageType } from 'src/app/services/admin/alertify.service';
 import { ProductService } from 'src/app/services/common/models/product.service';
 
 @Component({
@@ -31,7 +31,7 @@ export class ListComponent extends BaseComponent implements OnInit {
         this.hideSpinner(SpinnerType.BallSpinClockwise);
       },
       (error) => {
-
+        this.alertifyService.message(error, { messageType: MessageType.Error })
       })
   }
 
