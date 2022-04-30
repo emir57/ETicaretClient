@@ -24,19 +24,19 @@ export class ListComponent extends BaseComponent implements OnInit {
     super(spinner);
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.showSpinner(SpinnerType.BallSpinClockwise);
-    this.productService.read(
+    let allProducts: List_Product[] = await this.productService.read(
       (value) => {
         this.hideSpinner(SpinnerType.BallSpinClockwise);
-        this.dataSource = new MatTableDataSource<List_Product>(value);
       },
       (error) => {
         this.alertifyService.message(error, { messageType: MessageType.Error, position: Position.TopRight })
       })
+    this.dataSource = new MatTableDataSource<List_Product>(allProducts);
   }
 
-  getDate(dateString:string){
+  getDate(dateString: string) {
     let date = new Date(dateString);
     return `${date.getDate()}.${date.getMonth()}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`
   }
