@@ -12,7 +12,7 @@ import { ProductService } from 'src/app/services/common/models/product.service';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
-export class ListComponent extends BaseComponent implements OnInit, AfterViewInit {
+export class ListComponent extends BaseComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   displayedColumns: string[] = ['name', 'stock', 'price', 'createdDate', 'updatedDate'];
   dataSource: MatTableDataSource<List_Product> = new MatTableDataSource;
@@ -34,11 +34,8 @@ export class ListComponent extends BaseComponent implements OnInit, AfterViewIni
         this.alertifyService.message(error, { messageType: MessageType.Error, position: Position.TopRight })
       })
     this.dataSource = new MatTableDataSource<List_Product>(allProducts);
-  }
-  ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }
-
   getDate(dateString: string) {
     let date = new Date(dateString);
     return `${date.getDate()}.${date.getMonth()}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`
