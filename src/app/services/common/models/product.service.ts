@@ -34,7 +34,7 @@ export class ProductService {
     })
   }
 
-  async read(page: number = 0, size: number = 5, successCallBack?: (value: List_Product[]) => void, errorCallBack?: (errorMessage: string) => void): Promise<List_Product[]> {
+  async read(page: number = 0, size: number = 5, successCallBack?: (value: { totalCount: number, products: List_Product[] }) => void, errorCallBack?: (errorMessage: string) => void): Promise<{ totalCount: number, products: List_Product[] }> {
     const promiseData: Promise<{ totalCount: number, products: List_Product[] }> = this.httpClientService.get<{ totalCount: number, products: List_Product[] }>({
       controller: "products",
       action: "getall",
