@@ -44,7 +44,7 @@ export class ListComponent extends BaseComponent implements OnInit {
   }
 
   pageChanged() {
-
+    this.getProducts();
   }
 
 
