@@ -43,6 +43,10 @@ export class ListComponent extends BaseComponent implements OnInit {
     this.paginator.length = allProducts.totalCount;
   }
 
+  pageChanged() {
+
+  }
+
 
   getDate(dateString: string) {
     let date = new Date(dateString);
