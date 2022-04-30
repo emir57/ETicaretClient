@@ -10,7 +10,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class ListComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'stock', 'price', 'createdDate', 'updatedDate'];
-  dataSource: MatTableDataSource<any> = null;
+  dataSource: MatTableDataSource<any> = new MatTableDataSource;
   constructor() { }
 
   ngOnInit(): void {
