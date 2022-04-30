@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -12,8 +12,8 @@ import { ProductService } from 'src/app/services/common/models/product.service';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
-export class ListComponent extends BaseComponent implements OnInit {
-
+export class ListComponent extends BaseComponent implements OnInit, AfterViewInit {
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   displayedColumns: string[] = ['name', 'stock', 'price', 'createdDate', 'updatedDate'];
   dataSource: MatTableDataSource<List_Product> = new MatTableDataSource;
   constructor(
@@ -34,6 +34,9 @@ export class ListComponent extends BaseComponent implements OnInit {
         this.alertifyService.message(error, { messageType: MessageType.Error, position: Position.TopRight })
       })
     this.dataSource = new MatTableDataSource<List_Product>(allProducts);
+  }
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
   }
 
   getDate(dateString: string) {
