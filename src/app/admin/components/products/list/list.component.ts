@@ -14,7 +14,7 @@ import { ProductService } from 'src/app/services/common/models/product.service';
 })
 export class ListComponent extends BaseComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  displayedColumns: string[] = ['name', 'stock', 'price', 'createdDate', 'updatedDate'];
+  displayedColumns: string[] = ['name', 'stock', 'price', 'createdDate', 'updatedDate', 'delete'];
   dataSource: MatTableDataSource<List_Product> = new MatTableDataSource;
   constructor(
     public spinner: NgxSpinnerService,
