@@ -47,8 +47,8 @@ export class ListComponent extends BaseComponent implements OnInit {
     this.getProducts();
   }
 
-  delete(id: number) {
-
+  delete(id: number, event: any) {
+    console.log(event)
   }
 
   getDate(dateString: string) {
