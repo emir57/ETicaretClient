@@ -20,6 +20,7 @@ export class DeleteDirective {
   @HostListener("click")
   onClick() {
     const i: HTMLTableCellElement = this.element.nativeElement;
+
     $(i.parentElement).fadeOut(2000);
   }
 
