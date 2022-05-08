@@ -1,5 +1,5 @@
 import { Directive, ElementRef, HostListener, Renderer2 } from '@angular/core';
-import { HttpClientService } from 'src/app/services/common/http-client.service';
+import { ProductService } from 'src/app/services/common/models/product.service';
 declare var $: any;
 
 @Directive({
@@ -10,7 +10,7 @@ export class DeleteDirective {
   constructor(
     private element: ElementRef,
     private _renderer: Renderer2,
-    private httpClientService: HttpClientService
+    private productService: ProductService
   ) {
     const i: HTMLElement = _renderer.createElement("i");
     i.setAttribute("class", "bi bi-trash3 text-danger");
@@ -20,7 +20,7 @@ export class DeleteDirective {
   @HostListener("click")
   onClick() {
     const i: HTMLTableCellElement = this.element.nativeElement;
-
+    this.productService.delete()
     $(i.parentElement).fadeOut(2000);
   }
 
