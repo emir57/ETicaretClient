@@ -1,5 +1,6 @@
-import { Directive, ElementRef, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, HostListener, Renderer2 } from '@angular/core';
 import { HttpClientService } from 'src/app/services/common/http-client.service';
+declare var $: any;
 
 @Directive({
   selector: '[appDelete]'
@@ -15,6 +16,11 @@ export class DeleteDirective {
     i.setAttribute("class", "bi bi-trash3 text-danger");
     i.setAttribute("style", "cursor:pointer;float:right;");
     _renderer.appendChild(element.nativeElement, i);
+  }
+  @HostListener("click")
+  onClick() {
+    const i: HTMLTableCellElement = this.element.nativeElement;
+    $(i.parentElement).fadeOut(2000);
   }
 
 }

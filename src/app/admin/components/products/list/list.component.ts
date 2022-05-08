@@ -48,11 +48,6 @@ export class ListComponent extends BaseComponent implements OnInit {
     this.getProducts();
   }
 
-  delete(id: number, event: any) {
-    const img: HTMLImageElement = event.srcElement;
-    $(img.parentElement?.parentElement).fadeOut(2000);
-  }
-
   getDate(dateString: string) {
     let date = new Date(dateString);
     return `${date.getDate()}.${date.getMonth()}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`
