@@ -21,7 +21,7 @@ export class DeleteDirective {
   @HostListener("click")
   async onClick() {
     const i: HTMLTableCellElement = this.element.nativeElement;
-    await this.productService.delete(this.id)
+    this.productService.delete(this.id).subscribe();
     $(i.parentElement).fadeOut(2000);
   }
 
