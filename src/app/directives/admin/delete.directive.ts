@@ -10,6 +10,10 @@ export class DeleteDirective {
     private element: ElementRef,
     private _renderer: Renderer2,
     private httpClientService: HttpClientService
-  ) { }
+  ) {
+    const i: HTMLElement = _renderer.createElement("i");
+    i.setAttribute("class", "bi bi-trash3 text-danger");
+    i.setAttribute("style", "cursor:pointer;");
+  }
 
 }
