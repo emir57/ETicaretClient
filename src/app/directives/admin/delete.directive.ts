@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/core';
 import { ProductService } from 'src/app/services/common/models/product.service';
 declare var $: any;
 
@@ -7,6 +7,7 @@ declare var $: any;
 })
 export class DeleteDirective {
 
+  @Input() id: string = "";
   constructor(
     private element: ElementRef,
     private _renderer: Renderer2,
@@ -18,9 +19,9 @@ export class DeleteDirective {
     _renderer.appendChild(element.nativeElement, i);
   }
   @HostListener("click")
-  onClick() {
+  async onClick() {
     const i: HTMLTableCellElement = this.element.nativeElement;
-    this.productService.delete()
+    await this.productService.delete(this.id)
     $(i.parentElement).fadeOut(2000);
   }
 
