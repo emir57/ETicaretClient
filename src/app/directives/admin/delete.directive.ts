@@ -13,8 +13,8 @@ export class DeleteDirective {
   ) {
     const i: HTMLElement = _renderer.createElement("i");
     i.setAttribute("class", "bi bi-trash3 text-danger");
-    i.setAttribute("style", "cursor:pointer;");
-    _renderer.appendChild(element, i);
+    i.setAttribute("style", "cursor:pointer;float:right;");
+    _renderer.appendChild(element.nativeElement, i);
   }
 
 }
