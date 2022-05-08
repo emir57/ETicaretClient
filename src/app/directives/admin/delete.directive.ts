@@ -23,7 +23,7 @@ export class DeleteDirective {
   async onClick() {
     const i: HTMLTableCellElement = this.element.nativeElement;
     this.productService.delete(this.id).subscribe();
-    $(i.parentElement).fadeOut(2000, () => {
+    $(i.parentElement).fadeOut(1000, () => {
       this.callBack.emit();
     });
   }
