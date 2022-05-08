@@ -6,6 +6,7 @@ import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
 import { List_Product } from 'src/app/contracts/list_product';
 import { AlertifyService, MessageType, Position } from 'src/app/services/admin/alertify.service';
 import { ProductService } from 'src/app/services/common/models/product.service';
+declare var $: any;
 
 @Component({
   selector: 'product-list',
@@ -47,9 +48,9 @@ export class ListComponent extends BaseComponent implements OnInit {
     this.getProducts();
   }
 
-  delete(id: number, event:any) {
-    const img:HTMLImageElement = event.srcElement;
-    console.log(img.parentElement?.parentElement)
+  delete(id: number, event: any) {
+    const img: HTMLImageElement = event.srcElement;
+    $(img.parentElement?.parentElement).fadeOut(2000);
   }
 
   getDate(dateString: string) {
