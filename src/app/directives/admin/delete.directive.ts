@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, HostListener, Input, Output, Renderer2 } from '@angular/core';
 import { ProductService } from 'src/app/services/common/models/product.service';
 declare var $: any;
 
@@ -8,6 +8,7 @@ declare var $: any;
 export class DeleteDirective {
 
   @Input() id: string = "";
+  @Output() callBack: EventEmitter<any> = new EventEmitter<any>();
   constructor(
     private element: ElementRef,
     private _renderer: Renderer2,
@@ -22,7 +23,9 @@ export class DeleteDirective {
   async onClick() {
     const i: HTMLTableCellElement = this.element.nativeElement;
     this.productService.delete(this.id).subscribe();
-    $(i.parentElement).fadeOut(2000);
+    $(i.parentElement).fadeOut(2000, () => {
+      this.callBack.emit();
+    });
   }
 
 }
