@@ -47,8 +47,9 @@ export class ListComponent extends BaseComponent implements OnInit {
     this.getProducts();
   }
 
-  delete(id: number, event: any) {
-    console.log(event)
+  delete(id: number, event:any) {
+    const img:HTMLImageElement = event.srcElement;
+    console.log(img.parentElement?.parentElement)
   }
 
   getDate(dateString: string) {
