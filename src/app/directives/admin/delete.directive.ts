@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Directive, ElementRef, EventEmitter, HostListener, Input, Output, Renderer2 } from '@angular/core';
 import { AlertifyService, MessageType } from 'src/app/services/admin/alertify.service';
 import { HttpClientService } from 'src/app/services/common/http-client.service';
@@ -38,6 +39,8 @@ export class DeleteDirective {
       }, 700, () => {
         this.callBack.emit();
       })
+    }, (responseErr: HttpErrorResponse) => {
+      this.alertifyService.message("Ürün silinirken bir hata meydana geldi.", { messageType: MessageType.Error })
     });
 
   }
