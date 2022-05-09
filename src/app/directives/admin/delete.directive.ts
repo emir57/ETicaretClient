@@ -1,4 +1,5 @@
 import { Directive, ElementRef, EventEmitter, HostListener, Input, Output, Renderer2 } from '@angular/core';
+import { AlertifyService, MessageType } from 'src/app/services/admin/alertify.service';
 import { HttpClientService } from 'src/app/services/common/http-client.service';
 import { ProductService } from 'src/app/services/common/models/product.service';
 declare var $: any;
@@ -14,7 +15,8 @@ export class DeleteDirective {
   constructor(
     private element: ElementRef,
     private _renderer: Renderer2,
-    private httpClientService: HttpClientService
+    private httpClientService: HttpClientService,
+    private alertifyService: AlertifyService
   ) {
     const i: HTMLElement = _renderer.createElement("i");
     i.setAttribute("class", "bi bi-trash3 text-danger");
@@ -27,7 +29,8 @@ export class DeleteDirective {
     this.httpClientService.delete({
       controller: this.controller,
       action: "delete"
-    }, this.id).subscribe(data => {
+    }, this.id).subscribe((data: any) => {
+      this.alertifyService.message(data.message, { messageType: MessageType.Success })
       $(i.parentElement).animate({
         opacity: 0,
         left: "+=50",
