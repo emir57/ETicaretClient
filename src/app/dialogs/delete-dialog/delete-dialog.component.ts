@@ -19,5 +19,8 @@ export class DeleteDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
-
+}
+export enum DeleteState {
+  Yes,
+  No
 }
