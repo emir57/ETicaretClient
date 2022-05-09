@@ -9,6 +9,7 @@ declare var $: any;
 export class DeleteDirective {
 
   @Input() id: string = "";
+  @Input() controller: string = "";
   @Output() callBack: EventEmitter<any> = new EventEmitter<any>();
   constructor(
     private element: ElementRef,
@@ -23,7 +24,9 @@ export class DeleteDirective {
   @HostListener("click")
   async onClick() {
     const i: HTMLTableCellElement = this.element.nativeElement;
-    this.productService.delete(this.id).subscribe();
+    this.httpClientService.delete({
+      controller: ""
+    })
     $(i.parentElement).fadeOut(1000, () => {
       this.callBack.emit();
     });
