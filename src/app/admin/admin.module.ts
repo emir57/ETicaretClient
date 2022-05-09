@@ -5,7 +5,7 @@ import { ComponentsModule } from './components/components.module';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatSidenavModule } from '@angular/material/sidenav';
-
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -14,6 +14,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     CommonModule,
     LayoutModule,
     ComponentsModule,
+    MatDialogModule
   ],exports:[
     LayoutModule
   ]
