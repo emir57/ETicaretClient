@@ -16,6 +16,7 @@ export class DeleteDialogComponent implements OnInit {
   }
   close() {
     this.data = DeleteState.No;
+    this.dialogRef.close();
   }
 
   onNoClick(): void {
