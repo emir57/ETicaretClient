@@ -25,11 +25,18 @@ export class DeleteDirective {
   async onClick() {
     const i: HTMLTableCellElement = this.element.nativeElement;
     this.httpClientService.delete({
-      controller: ""
-    })
-    $(i.parentElement).fadeOut(1000, () => {
-      this.callBack.emit();
+      controller: this.controller,
+      action: "delete"
+    }, this.id).subscribe(data => {
+      $(i.parentElement).animate({
+        opacity: 0,
+        left: "+=50",
+        height: "toogle"
+      }, 700, () => {
+        this.callBack.emit();
+      })
     });
+
   }
 
 }
