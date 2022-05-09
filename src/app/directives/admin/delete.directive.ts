@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Directive, ElementRef, EventEmitter, HostListener, Input, Output, Renderer2 } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { AlertifyService, MessageType } from 'src/app/services/admin/alertify.service';
 import { HttpClientService } from 'src/app/services/common/http-client.service';
 import { ProductService } from 'src/app/services/common/models/product.service';
@@ -17,7 +18,8 @@ export class DeleteDirective {
     private element: ElementRef,
     private _renderer: Renderer2,
     private httpClientService: HttpClientService,
-    private alertifyService: AlertifyService
+    private alertifyService: AlertifyService,
+    private dialog: MatDialog
   ) {
     const i: HTMLElement = _renderer.createElement("i");
     i.setAttribute("class", "bi bi-trash3 text-danger");
@@ -43,6 +45,18 @@ export class DeleteDirective {
       this.alertifyService.message("Ürün silinirken bir hata meydana geldi.", { messageType: MessageType.Error })
     });
 
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '250px',
+      data: { name: this.name, animal: this.animal },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
   }
 
 }
