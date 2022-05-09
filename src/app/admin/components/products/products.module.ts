@@ -12,6 +12,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { DeleteDirective } from 'src/app/directives/admin/delete.directive';
 import { DeleteDialogComponent } from 'src/app/dialogs/delete-dialog/delete-dialog.component';
+import { MatDialogActions, MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import { DeleteDialogComponent } from 'src/app/dialogs/delete-dialog/delete-dial
     MatInputModule,
     MatButtonModule,
     MatTableModule,
-    MatPaginatorModule,
+    MatPaginatorModule
   ]
 })
 export class ProductsModule { }
