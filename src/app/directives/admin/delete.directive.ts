@@ -1,4 +1,5 @@
 import { Directive, ElementRef, EventEmitter, HostListener, Input, Output, Renderer2 } from '@angular/core';
+import { HttpClientService } from 'src/app/services/common/http-client.service';
 import { ProductService } from 'src/app/services/common/models/product.service';
 declare var $: any;
 
@@ -12,7 +13,7 @@ export class DeleteDirective {
   constructor(
     private element: ElementRef,
     private _renderer: Renderer2,
-    private productService: ProductService
+    private httpClientService: HttpClientService
   ) {
     const i: HTMLElement = _renderer.createElement("i");
     i.setAttribute("class", "bi bi-trash3 text-danger");
