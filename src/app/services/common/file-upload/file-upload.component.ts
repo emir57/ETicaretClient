@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
+import { HttpClientService } from '../http-client.service';
 
 @Component({
   selector: 'app-file-upload',
@@ -9,7 +10,9 @@ import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 
 export class FileUploadComponent implements OnInit {
 
   files: NgxFileDropEntry[] = [];
-  constructor() { }
+  constructor(
+    private httpClientService: HttpClientService
+  ) { }
 
   ngOnInit(): void {
   }
