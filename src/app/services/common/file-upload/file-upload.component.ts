@@ -33,5 +33,9 @@ export class FileUploadComponent implements OnInit {
 }
 
 export class FileUploadOptions {
-  
+  controller?: string;
+  action?: string;
+  queryString?: string;
+  explanation?: string;
+  accept?: string;
 }
