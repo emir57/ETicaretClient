@@ -16,6 +16,12 @@ export class FileUploadComponent implements OnInit {
 
   selectedFiles(files: NgxFileDropEntry[]) {
     this.files = files;
-
+    const fileData: FormData = new FormData();
+    for (const file of files) {
+      (file.fileEntry as FileSystemFileEntry)
+        .file((_file) => {
+          fileData.append(_file.name, _file, file.relativePath);
+        })
+    }
   }
 }
