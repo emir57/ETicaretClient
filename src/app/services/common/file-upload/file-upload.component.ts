@@ -50,10 +50,16 @@ export class FileUploadComponent implements OnInit {
           { messageType: ToastrMessageType.Success, position: ToastrPosition.TopRight })
       }
     }, (errResponse: HttpErrorResponse) => {
+      const message = "Dosyalar yüklenirken beklenmeyen bir hata meydana geldi.";
       if (this.options.isAdminPage) {
-
+        this.alertifyService.message(message,
+          {
+            dismissOthers: true, messageType: MessageType.Error,
+            position: Position.TopRight
+          })
       } else {
-
+        this.customToastrService.message(message, "Başarısız!",
+          { messageType: ToastrMessageType.Error, position: ToastrPosition.TopRight })
       }
     })
   }
