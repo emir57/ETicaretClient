@@ -20,7 +20,7 @@ export class CreateComponent extends BaseComponent implements OnInit {
     controller: "products",
     explanation: "Resimleri sürükleyin veya seçin",
     isAdminPage: true,
-
+    accept: ".png,.jpg,.jpeg"
   }
 
   constructor(
