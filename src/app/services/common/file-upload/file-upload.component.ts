@@ -38,9 +38,17 @@ export class FileUploadComponent implements OnInit {
       queryString: this.options.queryString,
       headers: new HttpHeaders({ "responseType": "blob" })
     }, fileData).subscribe(response => {
+      if (this.options.isAdminPage) {
 
+      } else {
+
+      }
     }, (errResponse: HttpErrorResponse) => {
+      if (this.options.isAdminPage) {
 
+      } else {
+
+      }
     })
   }
 }
