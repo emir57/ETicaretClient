@@ -15,9 +15,9 @@ export class FileUploadComponent implements OnInit {
   }
 
 
-  public dropped() {
-    this.files = this.files;
-    for (const droppedFile of this.files) {
+  public dropped(files: NgxFileDropEntry[]) {
+    this.files = files;
+    for (const droppedFile of files) {
 
       // Is it a file?
       if (droppedFile.fileEntry.isFile) {
@@ -52,12 +52,12 @@ export class FileUploadComponent implements OnInit {
     }
   }
 
-  public fileOver() {
-
+  public fileOver(event: Event) {
+    console.log(event);
   }
 
-  public fileLeave() {
-
+  public fileLeave(event: Event) {
+    console.log(event);
   }
 
 }
