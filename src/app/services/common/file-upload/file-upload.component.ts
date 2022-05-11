@@ -51,4 +51,5 @@ export class FileUploadOptions {
   queryString?: string;
   explanation?: string;
   accept?: string;
+  isAdminPage?: boolean = false;
 }
