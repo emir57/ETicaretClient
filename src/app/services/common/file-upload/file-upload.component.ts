@@ -2,7 +2,7 @@ import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
 import { AlertifyService, MessageType, Position } from '../../admin/alertify.service';
-import { CustomToastrService } from '../../ui/custom-toastr.service';
+import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../../ui/custom-toastr.service';
 import { HttpClientService } from '../http-client.service';
 
 @Component({
@@ -38,12 +38,16 @@ export class FileUploadComponent implements OnInit {
       queryString: this.options.queryString,
       headers: new HttpHeaders({ "responseType": "blob" })
     }, fileData).subscribe(response => {
+      const message = "Dosyalar başarıyla yüklenmiştir.";
       if (this.options.isAdminPage) {
-        this.alertifyService.message("Dosyalar başarıyla yüklenmiştir.",
-          { dismissOthers: true, messageType: MessageType.Success,
-            position: Position.TopRight })
+        this.alertifyService.message(message,
+          {
+            dismissOthers: true, messageType: MessageType.Success,
+            position: Position.TopRight
+          })
       } else {
-
+        this.customToastrService.message(message, "Başarılı!",
+          { messageType: ToastrMessageType.Success, position: ToastrPosition.TopRight })
       }
     }, (errResponse: HttpErrorResponse) => {
       if (this.options.isAdminPage) {
