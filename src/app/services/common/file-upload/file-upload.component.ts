@@ -1,6 +1,8 @@
 import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
+import { AlertifyService } from '../../admin/alertify.service';
+import { CustomToastrService } from '../../ui/custom-toastr.service';
 import { HttpClientService } from '../http-client.service';
 
 @Component({
@@ -13,7 +15,9 @@ export class FileUploadComponent implements OnInit {
   files: NgxFileDropEntry[] = [];
   @Input() options: Partial<FileUploadOptions> = {};
   constructor(
-    private httpClientService: HttpClientService
+    private httpClientService: HttpClientService,
+    private alertifyService: AlertifyService,
+    private customToastrService: CustomToastrService
   ) { }
 
   ngOnInit(): void {
