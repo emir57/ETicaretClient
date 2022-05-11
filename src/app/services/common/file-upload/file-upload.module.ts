@@ -10,7 +10,7 @@ import { NgxFileDropModule } from 'ngx-file-drop';
   ],
   imports: [
     CommonModule,
-    NgxFileDropModule
+    NgxFileDropModule,
   ],
   exports:[
     FileUploadComponent
