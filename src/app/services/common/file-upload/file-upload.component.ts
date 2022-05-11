@@ -1,4 +1,4 @@
-import { HttpHeaders } from '@angular/common/http';
+import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
 import { HttpClientService } from '../http-client.service';
@@ -33,7 +33,11 @@ export class FileUploadComponent implements OnInit {
       action: this.options.action,
       queryString: this.options.queryString,
       headers: new HttpHeaders({ "responseType": "blob" })
-    }, fileData)
+    }, fileData).subscribe(response => {
+
+    }, (errResponse: HttpErrorResponse) => {
+
+    })
   }
 }
 
