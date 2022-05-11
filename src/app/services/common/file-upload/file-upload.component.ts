@@ -26,5 +26,12 @@ export class FileUploadComponent implements OnInit {
           fileData.append(_file.name, _file, file.relativePath);
         })
     }
+    // this.httpClientService.post({
+
+    // })
   }
+}
+
+export class FileUploadOptions {
+  
 }
