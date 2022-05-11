@@ -8,16 +8,16 @@ import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 
 })
 export class FileUploadComponent implements OnInit {
 
-  files: NgxFileDropEntry[] = [];
+  public files: NgxFileDropEntry[] = [];
   constructor() { }
 
   ngOnInit(): void {
   }
 
 
-  public dropped(files: NgxFileDropEntry[]) {
-    this.files = files;
-    for (const droppedFile of files) {
+  public dropped() {
+    this.files = this.files;
+    for (const droppedFile of this.files) {
 
       // Is it a file?
       if (droppedFile.fileEntry.isFile) {
@@ -52,12 +52,12 @@ export class FileUploadComponent implements OnInit {
     }
   }
 
-  public fileOver(event: any) {
-    console.log(event);
+  public fileOver() {
+
   }
 
-  public fileLeave(event: any) {
-    console.log(event);
+  public fileLeave() {
+
   }
 
 }
