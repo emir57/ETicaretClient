@@ -1,7 +1,7 @@
 import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
-import { AlertifyService } from '../../admin/alertify.service';
+import { AlertifyService, MessageType, Position } from '../../admin/alertify.service';
 import { CustomToastrService } from '../../ui/custom-toastr.service';
 import { HttpClientService } from '../http-client.service';
 
@@ -39,7 +39,9 @@ export class FileUploadComponent implements OnInit {
       headers: new HttpHeaders({ "responseType": "blob" })
     }, fileData).subscribe(response => {
       if (this.options.isAdminPage) {
-
+        this.alertifyService.message("Dosyalar başarıyla yüklenmiştir.",
+          { dismissOthers: true, messageType: MessageType.Success,
+            position: Position.TopRight })
       } else {
 
       }
