@@ -16,8 +16,7 @@ import { FileUploadDialogComponent } from './dialogs/file-upload-dialog/file-upl
 
 @NgModule({
   declarations: [
-    AppComponent,
-    FileUploadDialogComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
