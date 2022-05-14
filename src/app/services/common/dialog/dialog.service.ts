@@ -13,7 +13,8 @@ export class DialogService {
 
   openDialog(dialogParameters: Partial<DialogParameters>): void {
     const dialogRef = this.dialog.open(DialogComponent, {
-      width: '250px',
+      width: dialogParameters.options?.width,
+      height: dialogParameters.options?.height,
       data: dialogParameters.data,
     });
 
@@ -31,4 +32,10 @@ export class DialogParameters {
   componentType!: ComponentType<any>;
   data!: any;
   afterClosed!: () => void;
+  options!: DialogOptions;
+}
+
+export class DialogOptions {
+  width!: string;
+  height!: string;
 }
