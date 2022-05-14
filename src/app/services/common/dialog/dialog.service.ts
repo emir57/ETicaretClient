@@ -40,7 +40,7 @@ export class DialogParameters {
 }
 
 export class DialogOptions {
-  width!: string;
-  height!: string;
-  position!: DialogPosition
+  width?: string = "250px";
+  height?: string;
+  position?: DialogPosition
 }
