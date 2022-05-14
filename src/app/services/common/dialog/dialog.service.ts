@@ -12,7 +12,10 @@ export class DialogService {
   ) { }
 
   openDialog(dialogParameters: Partial<DialogParameters>): void {
-    const dialogRef = this.dialog.open(DialogComponent, {
+    if (!dialogParameters.componentType) {
+      return;
+    }
+    const dialogRef = this.dialog.open(dialogParameters.componentType, {
       width: dialogParameters.options?.width,
       height: dialogParameters.options?.height,
       position: dialogParameters.options?.position,
