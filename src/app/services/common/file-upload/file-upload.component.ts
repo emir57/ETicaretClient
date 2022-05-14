@@ -1,6 +1,9 @@
 import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
+import { DeleteState } from 'src/app/dialogs/delete-dialog/delete-dialog.component';
+import { FileUploadDialogComponent } from 'src/app/dialogs/file-upload-dialog/file-upload-dialog.component';
 import { AlertifyService, MessageType, Position } from '../../admin/alertify.service';
 import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../../ui/custom-toastr.service';
 import { HttpClientService } from '../http-client.service';
@@ -17,7 +20,8 @@ export class FileUploadComponent implements OnInit {
   constructor(
     private httpClientService: HttpClientService,
     private alertifyService: AlertifyService,
-    private customToastrService: CustomToastrService
+    private customToastrService: CustomToastrService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -32,6 +36,7 @@ export class FileUploadComponent implements OnInit {
           fileData.append(_file.name, _file, file.relativePath);
         })
     }
+
     this.httpClientService.post({
       controller: this.options.controller,
       action: this.options.action,
@@ -63,6 +68,20 @@ export class FileUploadComponent implements OnInit {
       }
     })
   }
+
+  openDialog(afterClosed: any): void {
+    const dialogRef = this.dialog.open(FileUploadDialogComponent, {
+      width: '250px',
+      data: DeleteState.Yes,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result == DeleteState.Yes) {
+        afterClosed();
+      }
+    });
+  }
+
 }
 
 export class FileUploadOptions {

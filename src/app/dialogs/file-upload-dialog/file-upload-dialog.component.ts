@@ -16,3 +16,7 @@ export class FileUploadDialogComponent extends BaseDialog<FileUploadDialogCompon
     super(dialogRef);
   }
 }
+
+export enum FileUploadDialogState {
+  Yes, No
+}
