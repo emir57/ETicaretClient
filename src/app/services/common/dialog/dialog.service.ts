@@ -18,8 +18,10 @@ export class DialogService {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result == FileUploadDialogState.Yes) {
-        afterClosed();
+      if (result == dialogParameters.data) {
+        if (dialogParameters.afterClosed) {
+          dialogParameters.afterClosed();
+        }
       }
     });
   }
@@ -27,5 +29,6 @@ export class DialogService {
 
 export class DialogParameters {
   componentType!: ComponentType<any>;
-  data: any;
+  data!: any;
+  afterClosed!: () => void;
 }
