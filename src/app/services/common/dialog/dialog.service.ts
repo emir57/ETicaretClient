@@ -14,7 +14,7 @@ export class DialogService {
   openDialog(dialogParameters: Partial<DialogParameters>): void {
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '250px',
-      data: FileUploadDialogState.Yes,
+      data: dialogParameters.data,
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -27,4 +27,5 @@ export class DialogService {
 
 export class DialogParameters {
   componentType!: ComponentType<any>;
+  data: any;
 }
