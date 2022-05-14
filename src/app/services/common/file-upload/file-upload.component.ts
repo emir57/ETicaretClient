@@ -35,36 +35,37 @@ export class FileUploadComponent implements OnInit {
           fileData.append(_file.name, _file, file.relativePath);
         })
     }
-
-    this.httpClientService.post({
-      controller: this.options.controller,
-      action: this.options.action,
-      queryString: this.options.queryString,
-      headers: new HttpHeaders({ "responseType": "blob" })
-    }, fileData).subscribe(response => {
-      const message = "Dosyalar başarıyla yüklenmiştir.";
-      if (this.options.isAdminPage) {
-        this.alertifyService.message(message,
-          {
-            dismissOthers: true, messageType: MessageType.Success,
-            position: Position.TopRight
-          })
-      } else {
-        this.customToastrService.message(message, "Başarılı!",
-          { messageType: ToastrMessageType.Success, position: ToastrPosition.TopRight })
-      }
-    }, (errResponse: HttpErrorResponse) => {
-      const message = "Dosyalar yüklenirken beklenmeyen bir hata meydana geldi.";
-      if (this.options.isAdminPage) {
-        this.alertifyService.message(message,
-          {
-            dismissOthers: true, messageType: MessageType.Error,
-            position: Position.TopRight
-          })
-      } else {
-        this.customToastrService.message(message, "Başarısız!",
-          { messageType: ToastrMessageType.Error, position: ToastrPosition.TopRight })
-      }
+    this.openDialog(() => {
+      this.httpClientService.post({
+        controller: this.options.controller,
+        action: this.options.action,
+        queryString: this.options.queryString,
+        headers: new HttpHeaders({ "responseType": "blob" })
+      }, fileData).subscribe(response => {
+        const message = "Dosyalar başarıyla yüklenmiştir.";
+        if (this.options.isAdminPage) {
+          this.alertifyService.message(message,
+            {
+              dismissOthers: true, messageType: MessageType.Success,
+              position: Position.TopRight
+            })
+        } else {
+          this.customToastrService.message(message, "Başarılı!",
+            { messageType: ToastrMessageType.Success, position: ToastrPosition.TopRight })
+        }
+      }, (errResponse: HttpErrorResponse) => {
+        const message = "Dosyalar yüklenirken beklenmeyen bir hata meydana geldi.";
+        if (this.options.isAdminPage) {
+          this.alertifyService.message(message,
+            {
+              dismissOthers: true, messageType: MessageType.Error,
+              position: Position.TopRight
+            })
+        } else {
+          this.customToastrService.message(message, "Başarısız!",
+            { messageType: ToastrMessageType.Error, position: ToastrPosition.TopRight })
+        }
+      })
     })
   }
 
@@ -75,7 +76,7 @@ export class FileUploadComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result == FileUploadDialogState.No) {
+      if (result == FileUploadDialogState.Yes) {
         afterClosed();
       }
     });
