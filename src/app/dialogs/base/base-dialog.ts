@@ -5,6 +5,6 @@ export class BaseDialog<T> {
 
   }
   close() {
-
+    this.dialogRef.close();
   }
 }
