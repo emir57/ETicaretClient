@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ComponentType } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,8 @@ export class DialogService {
     private dialog: MatDialog
   ) { }
 
-  openDialog(afterClosed: any): void {
-    const dialogRef = this.dialog.open(FileUploadDialogComponent, {
+  openDialog(dialogParameters: Partial<DialogParameters>): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
       width: '250px',
       data: FileUploadDialogState.Yes,
     });
@@ -22,4 +23,8 @@ export class DialogService {
       }
     });
   }
+}
+
+export class DialogParameters {
+  componentType!: ComponentType<any>;
 }
