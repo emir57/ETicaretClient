@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
 import { DeleteState } from 'src/app/dialogs/delete-dialog/delete-dialog.component';
-import { FileUploadDialogComponent } from 'src/app/dialogs/file-upload-dialog/file-upload-dialog.component';
+import { FileUploadDialogComponent, FileUploadDialogState } from 'src/app/dialogs/file-upload-dialog/file-upload-dialog.component';
 import { AlertifyService, MessageType, Position } from '../../admin/alertify.service';
 import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../../ui/custom-toastr.service';
 import { HttpClientService } from '../http-client.service';
@@ -72,11 +72,11 @@ export class FileUploadComponent implements OnInit {
   openDialog(afterClosed: any): void {
     const dialogRef = this.dialog.open(FileUploadDialogComponent, {
       width: '250px',
-      data: DeleteState.Yes,
+      data: FileUploadDialogState.Yes,
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result == DeleteState.Yes) {
+      if (result == FileUploadDialogState.No) {
         afterClosed();
       }
     });
