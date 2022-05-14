@@ -21,8 +21,7 @@ import { FileUploadModule } from 'src/app/services/common/file-upload/file-uploa
     ProductsComponent,
     CreateComponent,
     ListComponent,
-    DeleteDirective,
-    DeleteDialogComponent
+    DeleteDirective
   ],
   imports: [
     CommonModule,
