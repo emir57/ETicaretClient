@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BaseDialog } from '../base/base-dialog';
 
 @Component({
@@ -10,7 +10,8 @@ import { BaseDialog } from '../base/base-dialog';
 export class FileUploadDialogComponent extends BaseDialog<FileUploadDialogComponent> {
 
   constructor(
-    dialogRef: MatDialogRef<FileUploadDialogComponent>
+    dialogRef: MatDialogRef<FileUploadDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
     super(dialogRef);
   }
