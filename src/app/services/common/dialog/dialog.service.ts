@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { DialogPosition, MatDialog } from '@angular/material/dialog';
 import { ComponentType } from 'ngx-toastr';
 
 @Injectable({
@@ -15,6 +15,7 @@ export class DialogService {
     const dialogRef = this.dialog.open(DialogComponent, {
       width: dialogParameters.options?.width,
       height: dialogParameters.options?.height,
+      position: dialogParameters.options?.position,
       data: dialogParameters.data,
     });
 
@@ -38,4 +39,5 @@ export class DialogParameters {
 export class DialogOptions {
   width!: string;
   height!: string;
+  position!: DialogPosition
 }
