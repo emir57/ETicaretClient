@@ -11,7 +11,7 @@ export class FileUploadDialogComponent extends BaseDialog<FileUploadDialogCompon
 
   constructor(
     dialogRef: MatDialogRef<FileUploadDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: FileUploadDialogComponent,
   ) {
     super(dialogRef);
   }
