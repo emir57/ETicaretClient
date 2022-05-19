@@ -2,6 +2,8 @@ import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { SpinnerType } from 'src/app/base/base.component';
 import { FileUploadDialogComponent, FileUploadDialogState } from 'src/app/dialogs/file-upload-dialog/file-upload-dialog.component';
 import { AlertifyService, MessageType, Position } from '../../admin/alertify.service';
 import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../../ui/custom-toastr.service';
@@ -22,7 +24,8 @@ export class FileUploadComponent implements OnInit {
     private alertifyService: AlertifyService,
     private customToastrService: CustomToastrService,
     private dialog: MatDialog,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit(): void {
@@ -44,13 +47,14 @@ export class FileUploadComponent implements OnInit {
         options: {
           width: "250px"
         },
-        afterClosed: () => {
+        afterClosed: async () => {
+          await this.spinner.show(SpinnerType.BallAtom);
           this.httpClientService.post({
             controller: this.options.controller,
             action: this.options.action,
             queryString: this.options.queryString,
             headers: new HttpHeaders({ "responseType": "blob" })
-          }, fileData).subscribe(response => {
+          }, fileData).subscribe(async response => {
             const message = "Dosyalar başarıyla yüklenmiştir.";
             if (this.options.isAdminPage) {
               this.alertifyService.message(message,
@@ -62,7 +66,8 @@ export class FileUploadComponent implements OnInit {
               this.customToastrService.message(message, "Başarılı!",
                 { messageType: ToastrMessageType.Success, position: ToastrPosition.TopRight })
             }
-          }, (errResponse: HttpErrorResponse) => {
+            await this.spinner.hide(SpinnerType.BallAtom);
+          }, async (errResponse: HttpErrorResponse) => {
             const message = "Dosyalar yüklenirken beklenmeyen bir hata meydana geldi.";
             if (this.options.isAdminPage) {
               this.alertifyService.message(message,
@@ -74,6 +79,7 @@ export class FileUploadComponent implements OnInit {
               this.customToastrService.message(message, "Başarısız!",
                 { messageType: ToastrMessageType.Error, position: ToastrPosition.TopRight })
             }
+            await this.spinner.hide(SpinnerType.BallAtom);
           })
         }
       }
