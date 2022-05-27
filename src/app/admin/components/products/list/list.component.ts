@@ -15,7 +15,7 @@ declare var $: any;
 })
 export class ListComponent extends BaseComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  displayedColumns: string[] = ['name', 'stock', 'price', 'createdDate', 'updatedDate', 'edit', 'delete'];
+  displayedColumns: string[] = ['name', 'stock', 'price', 'createdDate', 'updatedDate', 'photos', 'edit', 'delete'];
   dataSource: MatTableDataSource<List_Product> = new MatTableDataSource;
   constructor(
     public spinner: NgxSpinnerService,
