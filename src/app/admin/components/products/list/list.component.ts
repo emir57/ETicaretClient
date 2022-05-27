@@ -20,7 +20,7 @@ export class ListComponent extends BaseComponent implements OnInit {
   constructor(
     public spinner: NgxSpinnerService,
     private productService: ProductService,
-    private alertifyService: AlertifyService
+    private alertifyService: AlertifyService,
   ) {
     super(spinner);
   }
@@ -46,6 +46,10 @@ export class ListComponent extends BaseComponent implements OnInit {
 
   pageChanged() {
     this.getProducts();
+  }
+
+  addProductImages(id: string) {
+
   }
 
   getDate(dateString: string) {
