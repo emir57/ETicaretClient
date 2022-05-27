@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BaseDialog } from '../base/base-dialog';
 
 @Component({
@@ -9,7 +9,9 @@ import { BaseDialog } from '../base/base-dialog';
 })
 export class SelectProductImageDialogComponent extends BaseDialog<SelectProductImageDialogComponent> {
 
-  constructor(dialogRef: MatDialogRef<SelectProductImageDialogComponent>) {
+  constructor(
+    dialogRef: MatDialogRef<SelectProductImageDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: SelectProductImageState | string) {
     super(dialogRef);
   }
 
