@@ -13,9 +13,6 @@ export class SelectProductImageDialogComponent extends BaseDialog<SelectProductI
     super(dialogRef);
   }
 
-  ngOnInit(): void {
-  }
-
 }
 
 export enum SelectProductImageState {
