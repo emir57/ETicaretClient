@@ -6,8 +6,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { SelectProductImageDialogComponent } from './select-product-image-dialog/select-product-image-dialog.component';
 
-
-
 @NgModule({
   declarations: [
     DeleteDialogComponent,
@@ -17,7 +15,7 @@ import { SelectProductImageDialogComponent } from './select-product-image-dialog
   imports: [
     CommonModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   exports: [
     DeleteDialogComponent,

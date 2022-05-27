@@ -1,5 +1,6 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Output } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FileUploadOptions } from 'src/app/services/common/file-upload/file-upload.component';
 import { BaseDialog } from '../base/base-dialog';
 
 @Component({
@@ -13,6 +14,10 @@ export class SelectProductImageDialogComponent extends BaseDialog<SelectProductI
     dialogRef: MatDialogRef<SelectProductImageDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: SelectProductImageState | string) {
     super(dialogRef);
+  }
+
+  @Output() options: Partial<FileUploadOptions> = {
+    accept: ".png, .jpg, .jpeg, .gif"
   }
 
 }
