@@ -17,3 +17,7 @@ export class SelectProductImageDialogComponent extends BaseDialog<SelectProductI
   }
 
 }
+
+export enum SelectProductImageState {
+  Close
+}
