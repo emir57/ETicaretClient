@@ -1,5 +1,7 @@
 import { Component, Inject, OnInit, Output } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { SpinnerType } from 'src/app/base/base.component';
 import { List_Product_Image } from 'src/app/contracts/list_product_image';
 import { FileUploadOptions } from 'src/app/services/common/file-upload/file-upload.component';
 import { ProductService } from 'src/app/services/common/models/product.service';
@@ -17,11 +19,16 @@ export class SelectProductImageDialogComponent extends BaseDialog<SelectProductI
     @Inject("baseUrl") public baseUrl: String,
     dialogRef: MatDialogRef<SelectProductImageDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: SelectProductImageState | string,
-    private productService: ProductService) {
+    private productService: ProductService,
+    private spinner: NgxSpinnerService) {
     super(dialogRef);
   }
   async ngOnInit() {
-    this.images = await this.productService.readImages(this.data as string);
+    this.spinner.show(SpinnerType.BallAtom);
+    this.images = await this.productService.readImages(this.data as string,
+      () => {
+        this.spinner.hide(SpinnerType.BallAtom);
+      });
   }
 
   @Output() options: Partial<FileUploadOptions> = {
