@@ -51,7 +51,7 @@ export class HttpClientService {
       url = requestParameter.fullEndPoint;
     } else {
       url = `${this.url(requestParameter)}?id=${id}${requestParameter.queryString ?
-        "?" + requestParameter.queryString : ""}`;
+        "&" + requestParameter.queryString : ""}`;
     }
     return this.httpClient.delete<T>(url, { headers: requestParameter.headers });
   }
