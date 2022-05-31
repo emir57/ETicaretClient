@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit, Output } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FileUploadOptions } from 'src/app/services/common/file-upload/file-upload.component';
+import { ProductService } from 'src/app/services/common/models/product.service';
 import { BaseDialog } from '../base/base-dialog';
 
 @Component({
@@ -8,13 +9,17 @@ import { BaseDialog } from '../base/base-dialog';
   templateUrl: './select-product-image-dialog.component.html',
   styleUrls: ['./select-product-image-dialog.component.css']
 })
-export class SelectProductImageDialogComponent extends BaseDialog<SelectProductImageDialogComponent> {
+export class SelectProductImageDialogComponent extends BaseDialog<SelectProductImageDialogComponent> implements OnInit {
 
-  x = [1, 213, 213, 123, 21, 321, 3, 123];
+
   constructor(
     dialogRef: MatDialogRef<SelectProductImageDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: SelectProductImageState | string) {
+    @Inject(MAT_DIALOG_DATA) public data: SelectProductImageState | string,
+    private productService: ProductService) {
     super(dialogRef);
+  }
+  ngOnInit(): void {
+
   }
 
   @Output() options: Partial<FileUploadOptions> = {
