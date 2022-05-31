@@ -10,6 +10,7 @@ import { BaseDialog } from '../base/base-dialog';
 })
 export class SelectProductImageDialogComponent extends BaseDialog<SelectProductImageDialogComponent> {
 
+  x = [1, 213, 213, 123, 21, 321, 3, 123];
   constructor(
     dialogRef: MatDialogRef<SelectProductImageDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: SelectProductImageState | string) {
