@@ -7,7 +7,7 @@
     <img mat-card-image src="https://localhost:44392/{{image.path}}" alt="Photo of a Shiba Inu">
     <mat-card-content>{{image.fileName}}</mat-card-content>
     <mat-card-actions>
-      <button mat-button style="background: #dc3545;color: #fff;">Delete</button>
+      <button (click)="deleteImage(image.id)" mat-button style="background: #dc3545;color: #fff;">Delete</button>
     </mat-card-actions>
   </mat-card>
 

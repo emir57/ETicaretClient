@@ -31,6 +31,10 @@ export class SelectProductImageDialogComponent extends BaseDialog<SelectProductI
       });
   }
 
+  deleteImage(id: string) {
+
+  }
+
   @Output() options: Partial<FileUploadOptions> = {
     accept: ".png, .jpg, .jpeg, .gif",
     action: "upload",
