@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Create_Product } from 'src/app/contracts/create_product';
 import { List_Product } from 'src/app/contracts/list_product';
+import { List_Product_Image } from 'src/app/contracts/list_product_image';
 import { HttpClientService } from '../http-client.service';
 
 @Injectable({
@@ -54,7 +55,7 @@ export class ProductService {
   }
 
   async readImages(id: string) {
-    const getObservable: Observable<any> = this.httpClientService.get({
+    const getObservable: Observable<List_Product_Image[]> = this.httpClientService.get<List_Product_Image[]>({
       action: "productimages",
       controller: "products"
     }, id);
