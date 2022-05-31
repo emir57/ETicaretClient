@@ -35,6 +35,8 @@ export class SelectProductImageDialogComponent extends BaseDialog<SelectProductI
     this.spinner.show(SpinnerType.BallPulseAsync);
     this.productService.deleteImage(this.data as string, id).subscribe((response) => {
       this.spinner.hide(SpinnerType.BallPulseAsync);
+      let i = this.images.findIndex(x => x.id === id);
+      this.images.splice(i, 1);
     });
   }
 
