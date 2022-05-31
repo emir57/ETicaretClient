@@ -64,4 +64,13 @@ export class ProductService {
       successCallBack();
     return images;
   }
+  async deleteImage(productId: string, imageId: string) {
+    const getObservable: Observable<any> =
+      this.httpClientService.delete({
+        action: "deleteproductimage",
+        controller: "products",
+        queryString: `?imageId=${imageId}`
+      }, productId);
+    return await getObservable.toPromise();
+  }
 }
