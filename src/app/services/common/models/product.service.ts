@@ -52,4 +52,12 @@ export class ProductService {
     }, id);
     return deleteObservable;
   }
+
+  async readImages(id: string) {
+    const getObservable: Observable<any> = this.httpClientService.get({
+      action: "productimages",
+      controller: "products"
+    }, id);
+    return await getObservable.toPromise();
+  }
 }
