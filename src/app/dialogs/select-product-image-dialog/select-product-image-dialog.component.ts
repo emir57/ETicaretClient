@@ -32,7 +32,7 @@ export class SelectProductImageDialogComponent extends BaseDialog<SelectProductI
   }
 
   async deleteImage(id: string) {
-    await this.productService.deleteImage(this.data as string,id);
+    this.productService.deleteImage(this.data as string, id).subscribe();
   }
 
   @Output() options: Partial<FileUploadOptions> = {
