@@ -14,6 +14,7 @@ export class SelectProductImageDialogComponent extends BaseDialog<SelectProductI
 
   images: List_Product_Image[] = [];
   constructor(
+    @Inject("baseUrl") public baseUrl: String,
     dialogRef: MatDialogRef<SelectProductImageDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: SelectProductImageState | string,
     private productService: ProductService) {
