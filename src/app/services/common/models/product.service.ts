@@ -54,11 +54,14 @@ export class ProductService {
     return deleteObservable;
   }
 
-  async readImages(id: string) {
+  async readImages(id: string, successCallBack?: () => void) {
     const getObservable: Observable<List_Product_Image[]> = this.httpClientService.get<List_Product_Image[]>({
       action: "productimages",
       controller: "products"
     }, id);
-    return await getObservable.toPromise();
+    const images: List_Product_Image[] = await getObservable.toPromise()
+    if (successCallBack)
+      successCallBack();
+    return images;
   }
 }
