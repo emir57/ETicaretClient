@@ -24,16 +24,22 @@ export class RegisterComponent implements OnInit {
         Validators.maxLength(50),
         Validators.minLength(3)]],
       username: ["", , [
-        Validators.required
+        Validators.required,
+        Validators.maxLength(50),
+        Validators.minLength(3)
       ]],
       email: ["", [
-        Validators.required
+        Validators.required,
+        Validators.maxLength(100),
+        Validators.email
       ]],
       password: ["", [
-        Validators.required
+        Validators.required,
+        Validators.minLength(6)
       ]],
       rePassword: ["", [
-        Validators.required
+        Validators.required,
+        Validators.minLength(6)
       ]]
     })
   }
