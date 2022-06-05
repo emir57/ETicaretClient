@@ -108,6 +108,10 @@
             şifre tekrarı boş olamaz
           </div>
         </div>
+        <div class="form-text text-danger"
+          *ngIf="(rePassword?.dirty || rePassword?.touched)&&registerForm.hasError('notSame')">
+          şifreler uyuşmuyor
+        </div>
         <!-- RePassword Errors End -->
       </div>
       <!-- RePassword End -->
