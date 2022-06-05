@@ -44,6 +44,10 @@ export class RegisterComponent implements OnInit {
     })
   }
 
+  get component() {
+    return this.form.controls;
+  }
+
   onSubmit(value: FormGroup) {
 
   }
