@@ -41,8 +41,22 @@
       <div class="mb-3">
         <label for="email" class="form-label">Eposta Adresi</label>
         <input formControlName="email" type="email" class="form-control" placeholder="Eposta Adresi" id="email"
-          aria-describedby="emailHelp">
-        <div id="emailHelp" class="form-text text-danger">We'll never share your email with anyone else.</div>
+          [ngClass]="{'is-invalid':(email?.dirty || email?.touched)&&email?.errors}" aria-describedby="emailHelp">
+        <div *ngIf="(email?.dirty || email?.touched)&&email?.errors" id="firstLastNameHelp"
+          class="form-text text-danger">
+          <div *ngIf="email?.errors?.maxlength">
+            eposta adresi maksimum {{email?.errors?.maxlength.requiredLength}} karakter olabilir
+          </div>
+          <div *ngIf="firstLastName?.errors?.minlength">
+            eposta adresi minimum {{email?.errors?.minlength.requiredLength}} karakter olabilir
+          </div>
+          <div *ngIf="email?.errors?.required">
+            eposta adresi boş olamaz
+          </div>
+          <div *ngIf="email?.errors?.email">
+            geçersiz eposta adresi
+          </div>
+        </div>
       </div>
       <div class="mb-3">
         <label for="password" class="form-label">Şifre</label>
