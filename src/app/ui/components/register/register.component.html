@@ -76,8 +76,16 @@
       <div class="mb-3">
         <label for="repassword" class="form-label">Şifre Tekrar</label>
         <input formControlName="rePassword" type="password" placeholder="Şifre Tekrarı" class="form-control"
-          id="repassword">
-        <div id="emailHelp" class="form-text text-danger">We'll never share your email with anyone else.</div>
+          [ngClass]="{'is-invalid':(rePassword?.dirty || rePassword?.touched)&&rePassword?.errors}" id="repassword">
+        <div *ngIf="(rePassword?.dirty || rePassword?.touched)&&rePassword?.errors" id="firstLastNameHelp"
+          class="form-text text-danger">
+          <div *ngIf="rePassword?.errors?.minlength">
+            şifre tekrarı minimum {{rePassword?.errors?.minlength.requiredLength}} karakter olabilir
+          </div>
+          <div *ngIf="rePassword?.errors?.required">
+            şifre tekrarı boş olamaz
+          </div>
+        </div>
       </div>
       <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="agreement">
