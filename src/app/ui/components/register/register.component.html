@@ -7,9 +7,10 @@
         <input formControlName="firstLastName" type="text" class="form-control" placeholder="Ad Soyad"
           [ngClass]="{'is-invalid':(firstLastName?.dirty || firstLastName?.touched)&&firstLastName?.errors}"
           id="firstLastName" aria-describedby="firstLastNameHelp">
-        <div *ngIf="firstLastName?.errors" id="firstLastNameHelp" class="form-text text-danger">
+        <div *ngIf="(firstLastName?.dirty || firstLastName?.touched)&&firstLastName?.errors" id="firstLastNameHelp"
+          class="form-text text-danger">
           <div *ngIf="firstLastName?.errors?.maxlength">
-            ad ve soyad maksimum 0 karakter olabilir.
+            ad ve soyad maksimum {{firstLastName?.errors?.maxlength.requiredLength}} karakter olabilir.
           </div>
         </div>
       </div>
