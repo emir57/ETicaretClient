@@ -30,7 +30,7 @@
           <div *ngIf="username?.errors?.maxlength">
             kullanıcı adı maksimum {{username?.errors?.maxlength.requiredLength}} karakter olabilir
           </div>
-          <div *ngIf="firstLastName?.errors?.minlength">
+          <div *ngIf="username?.errors?.minlength">
             kullanıcı adı minimum {{username?.errors?.minlength.requiredLength}} karakter olabilir
           </div>
           <div *ngIf="username?.errors?.required">
@@ -47,7 +47,7 @@
           <div *ngIf="email?.errors?.maxlength">
             eposta adresi maksimum {{email?.errors?.maxlength.requiredLength}} karakter olabilir
           </div>
-          <div *ngIf="firstLastName?.errors?.minlength">
+          <div *ngIf="email?.errors?.minlength">
             eposta adresi minimum {{email?.errors?.minlength.requiredLength}} karakter olabilir
           </div>
           <div *ngIf="email?.errors?.required">
@@ -60,8 +60,18 @@
       </div>
       <div class="mb-3">
         <label for="password" class="form-label">Şifre</label>
-        <input formControlName="password" type="password" placeholder="Şifre" class="form-control" id="password">
-        <div id="emailHelp" class="form-text text-danger">We'll never share your email with anyone else.</div>
+        <input formControlName="password" type="password"
+          [ngClass]="{'is-invalid':(password?.dirty || password?.touched)&&password?.errors}" placeholder="Şifre"
+          class="form-control" id="password">
+        <div *ngIf="(password?.dirty || password?.touched)&&password?.errors" id="firstLastNameHelp"
+          class="form-text text-danger">
+          <div *ngIf="password?.errors?.minlength">
+            şifre minimum {{password?.errors?.minlength.requiredLength}} karakter olabilir
+          </div>
+          <div *ngIf="password?.errors?.required">
+            şifre boş olamaz
+          </div>
+        </div>
       </div>
       <div class="mb-3">
         <label for="repassword" class="form-label">Şifre Tekrar</label>
