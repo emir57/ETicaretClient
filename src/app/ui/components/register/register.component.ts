@@ -13,8 +13,9 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.createForm();
+    console.log(this.registerForm)
   }
 
   createForm() {
@@ -22,8 +23,9 @@ export class RegisterComponent implements OnInit {
       firstLastName: ["", [
         Validators.required,
         Validators.maxLength(50),
-        Validators.minLength(3)]],
-      username: ["", , [
+        Validators.minLength(3)
+      ]],
+      username: ["", [
         Validators.required,
         Validators.maxLength(50),
         Validators.minLength(3)
