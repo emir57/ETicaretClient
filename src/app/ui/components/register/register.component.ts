@@ -43,9 +43,20 @@ export class RegisterComponent implements OnInit {
       ]]
     })
   }
-
-  get component() {
-    return this.form.controls;
+  get firstLastName() {
+    return this.form.get("firstLastName");
+  }
+  get username() {
+    return this.form.get("username");
+  }
+  get email() {
+    return this.form.get("email");
+  }
+  get password() {
+    return this.form.get("password");
+  }
+  get rePassword() {
+    return this.form.get("rePassword");
   }
 
   onSubmit(value: FormGroup) {
