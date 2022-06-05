@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(value: FormGroup) {
-    console.log(value)
+
   }
 
 }
