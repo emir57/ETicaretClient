@@ -23,8 +23,20 @@
       <div class="mb-3">
         <label for="username" class="form-label">Kullanıcı Adı</label>
         <input formControlName="username" type="text" class="form-control" placeholder="Kullanıcı Adı" id="username"
+          [ngClass]="{'is-invalid':(username?.dirty || username?.touched)&&username?.errors}"
           aria-describedby="usernameHelp">
-        <div id="usernameHelp" class="form-text text-danger">We'll never share your email with anyone else.</div>
+        <div *ngIf="(username?.dirty || username?.touched)&&username?.errors" id="firstLastNameHelp"
+          class="form-text text-danger">
+          <div *ngIf="username?.errors?.maxlength">
+            kullanıcı adı maksimum {{username?.errors?.maxlength.requiredLength}} karakter olabilir
+          </div>
+          <div *ngIf="firstLastName?.errors?.minlength">
+            kullanıcı adı minimum {{username?.errors?.minlength.requiredLength}} karakter olabilir
+          </div>
+          <div *ngIf="username?.errors?.required">
+            kullanıcı adı boş olamaz
+          </div>
+        </div>
       </div>
       <div class="mb-3">
         <label for="email" class="form-label">Eposta Adresi</label>
