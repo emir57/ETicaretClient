@@ -8,6 +8,7 @@
         <input formControlName="firstLastName" type="text" class="form-control" placeholder="Ad Soyad"
           [ngClass]="{'is-invalid':(firstLastName?.dirty || firstLastName?.touched)&&firstLastName?.errors}"
           id="firstLastName" aria-describedby="firstLastNameHelp">
+        <!-- FirstName LastName Errors Start -->
         <div *ngIf="(firstLastName?.dirty || firstLastName?.touched)&&firstLastName?.errors" id="firstLastNameHelp"
           class="form-text text-danger">
           <div *ngIf="firstLastName?.errors?.maxlength">
@@ -20,6 +21,7 @@
             ad ve soyad boş olamaz
           </div>
         </div>
+        <!-- FirstName LastName Errors End -->
       </div>
       <!-- FirstName LastName End -->
       <!-- Username Start -->
@@ -28,6 +30,7 @@
         <input formControlName="username" type="text" class="form-control" placeholder="Kullanıcı Adı" id="username"
           [ngClass]="{'is-invalid':(username?.dirty || username?.touched)&&username?.errors}"
           aria-describedby="usernameHelp">
+        <!-- Username Errors Start -->
         <div *ngIf="(username?.dirty || username?.touched)&&username?.errors" id="firstLastNameHelp"
           class="form-text text-danger">
           <div *ngIf="username?.errors?.maxlength">
@@ -40,6 +43,7 @@
             kullanıcı adı boş olamaz
           </div>
         </div>
+        <!-- Username Errors End -->
       </div>
       <!-- Username End -->
       <!-- Email Start -->
@@ -47,6 +51,7 @@
         <label for="email" class="form-label">Eposta Adresi</label>
         <input formControlName="email" type="email" class="form-control" placeholder="Eposta Adresi" id="email"
           [ngClass]="{'is-invalid':(email?.dirty || email?.touched)&&email?.errors}" aria-describedby="emailHelp">
+        <!-- Email Errors Start -->
         <div *ngIf="(email?.dirty || email?.touched)&&email?.errors" id="firstLastNameHelp"
           class="form-text text-danger">
           <div *ngIf="email?.errors?.maxlength">
@@ -62,6 +67,7 @@
             geçersiz eposta adresi
           </div>
         </div>
+        <!-- Email Errors End -->
       </div>
       <!-- Email End -->
       <!-- Password Start -->
@@ -70,6 +76,7 @@
         <input formControlName="password" type="password"
           [ngClass]="{'is-invalid':(password?.dirty || password?.touched)&&password?.errors}" placeholder="Şifre"
           class="form-control" id="password">
+        <!-- Password Errors Start -->
         <div *ngIf="(password?.dirty || password?.touched)&&password?.errors" id="firstLastNameHelp"
           class="form-text text-danger">
           <div *ngIf="password?.errors?.minlength">
@@ -79,6 +86,7 @@
             şifre boş olamaz
           </div>
         </div>
+        <!-- Password Errors End -->
       </div>
       <!-- Password End -->
       <!-- RePassword Start -->
@@ -86,6 +94,7 @@
         <label for="repassword" class="form-label">Şifre Tekrar</label>
         <input formControlName="rePassword" type="password" placeholder="Şifre Tekrarı" class="form-control"
           [ngClass]="{'is-invalid':(rePassword?.dirty || rePassword?.touched)&&rePassword?.errors}" id="repassword">
+        <!-- RePassword Errors Start -->
         <div *ngIf="(rePassword?.dirty || rePassword?.touched)&&rePassword?.errors" id="firstLastNameHelp"
           class="form-text text-danger">
           <div *ngIf="rePassword?.errors?.minlength">
@@ -95,6 +104,7 @@
             şifre tekrarı boş olamaz
           </div>
         </div>
+        <!-- RePassword Errors End -->
       </div>
       <!-- RePassword End -->
       <div class="mb-3 form-check">
