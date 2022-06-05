@@ -14,6 +14,13 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.createForm();
+  }
+
+  createForm() {
+    this.form = this.formBuilder.group({
+
+    })
   }
 
 }
