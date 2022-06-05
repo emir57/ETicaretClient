@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  form!: FormGroup;
+  registerForm!: FormGroup;
   constructor(
     private formBuilder: FormBuilder
   ) { }
@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
   }
 
   createForm() {
-    this.form = this.formBuilder.group({
+    this.registerForm = this.formBuilder.group({
       firstLastName: ["", [
         Validators.required,
         Validators.maxLength(50),
@@ -44,19 +44,19 @@ export class RegisterComponent implements OnInit {
     })
   }
   get firstLastName() {
-    return this.form.get("firstLastName");
+    return this.registerForm.get("firstLastName");
   }
   get username() {
-    return this.form.get("username");
+    return this.registerForm.get("username");
   }
   get email() {
-    return this.form.get("email");
+    return this.registerForm.get("email");
   }
   get password() {
-    return this.form.get("password");
+    return this.registerForm.get("password");
   }
   get rePassword() {
-    return this.form.get("rePassword");
+    return this.registerForm.get("rePassword");
   }
 
   onSubmit(value: FormGroup) {
