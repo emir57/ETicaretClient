@@ -2,6 +2,7 @@
   <div class="col-md-3"></div>
   <div class="col-md-6">
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+      <!-- FirstName LastName Start -->
       <div class="mb-3">
         <label for="firstLastName" class="form-label">Ad Soyad</label>
         <input formControlName="firstLastName" type="text" class="form-control" placeholder="Ad Soyad"
@@ -20,6 +21,8 @@
           </div>
         </div>
       </div>
+      <!-- FirstName LastName End -->
+      <!-- Username Start -->
       <div class="mb-3">
         <label for="username" class="form-label">Kullanıcı Adı</label>
         <input formControlName="username" type="text" class="form-control" placeholder="Kullanıcı Adı" id="username"
@@ -38,6 +41,8 @@
           </div>
         </div>
       </div>
+      <!-- Username End -->
+      <!-- Email Start -->
       <div class="mb-3">
         <label for="email" class="form-label">Eposta Adresi</label>
         <input formControlName="email" type="email" class="form-control" placeholder="Eposta Adresi" id="email"
@@ -58,6 +63,8 @@
           </div>
         </div>
       </div>
+      <!-- Email End -->
+      <!-- Password Start -->
       <div class="mb-3">
         <label for="password" class="form-label">Şifre</label>
         <input formControlName="password" type="password"
@@ -73,6 +80,8 @@
           </div>
         </div>
       </div>
+      <!-- Password End -->
+      <!-- RePassword Start -->
       <div class="mb-3">
         <label for="repassword" class="form-label">Şifre Tekrar</label>
         <input formControlName="rePassword" type="password" placeholder="Şifre Tekrarı" class="form-control"
@@ -87,6 +96,7 @@
           </div>
         </div>
       </div>
+      <!-- RePassword End -->
       <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="agreement">
         <label class="form-check-label" for="agreement">Kullanıcı sözleşmesini okudum</label>
