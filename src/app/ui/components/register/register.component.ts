@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
         Validators.required,
         Validators.minLength(6)
       ]]
-    })
+    }, { validators: this.checkPassword })
   }
   get firstLastName() {
     return this.registerForm.get("firstLastName");
