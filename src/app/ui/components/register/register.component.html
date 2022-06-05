@@ -10,7 +10,13 @@
         <div *ngIf="(firstLastName?.dirty || firstLastName?.touched)&&firstLastName?.errors" id="firstLastNameHelp"
           class="form-text text-danger">
           <div *ngIf="firstLastName?.errors?.maxlength">
-            ad ve soyad maksimum {{firstLastName?.errors?.maxlength.requiredLength}} karakter olabilir.
+            ad ve soyad maksimum {{firstLastName?.errors?.maxlength.requiredLength}} karakter olabilir
+          </div>
+          <div *ngIf="firstLastName?.errors?.minlength">
+            ad ve soyad minimum {{firstLastName?.errors?.minlength.requiredLength}} karakter olabilir
+          </div>
+          <div *ngIf="firstLastName?.errors?.required">
+            ad ve soyad boş olamaz
           </div>
         </div>
       </div>
