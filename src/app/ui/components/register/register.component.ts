@@ -19,7 +19,11 @@ export class RegisterComponent implements OnInit {
 
   createForm() {
     this.form = this.formBuilder.group({
-
+      firstLastName: [""],
+      username: [""],
+      email: [""],
+      password: [""],
+      rePassword: [""]
     })
   }
 
