@@ -5,7 +5,8 @@
       <div class="mb-3">
         <label for="firstLastName" class="form-label">Ad Soyad</label>
         <input formControlName="firstLastName" type="text" class="form-control" placeholder="Ad Soyad"
-          [ngClass]="{'is-invalid':firstLastName?.errors}" id="firstLastName" aria-describedby="firstLastNameHelp">
+          [ngClass]="{'is-invalid':(firstLastName?.dirty || firstLastName?.touched)&&firstLastName?.errors}"
+          id="firstLastName" aria-describedby="firstLastNameHelp">
         <div *ngIf="firstLastName?.errors" id="firstLastNameHelp" class="form-text text-danger">
           <div *ngIf="firstLastName?.errors?.maxlength">
             ad ve soyad maksimum 0 karakter olabilir.
