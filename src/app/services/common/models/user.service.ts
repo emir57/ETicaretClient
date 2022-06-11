@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Create_User } from 'src/app/contracts/users/create_user';
 import { User } from 'src/app/entities/user';
 import { HttpClientService } from '../http-client.service';
 
@@ -11,9 +13,10 @@ export class UserService {
     private httpClientService: HttpClientService
   ) { }
 
-  create(user: User) {
-    this.httpClientService.post({
+  async create(user: User): Promise<Create_User | User> {
+    const observable: Observable<Create_User | User> = this.httpClientService.post<Create_User | User>({
       controller: "users"
-    }, user)
+    }, user);
+    return await observable.toPromise();
   }
 }
