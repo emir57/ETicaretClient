@@ -13,10 +13,10 @@ export class UserService {
     private httpClientService: HttpClientService
   ) { }
 
-  async create(user: User): Promise<Create_User | User> {
+  async create(user: User): Promise<Create_User> {
     const observable: Observable<Create_User | User> = this.httpClientService.post<Create_User | User>({
       controller: "users"
     }, user);
-    return await observable.toPromise();
+    return (await observable.toPromise()) as Create_User;
   }
 }
