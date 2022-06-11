@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Create_User } from 'src/app/contracts/users/create_user';
 import { User } from 'src/app/entities/user';
-import { Position } from 'src/app/services/admin/alertify.service';
 import { UserService } from 'src/app/services/common/models/user.service';
-import { CustomToastrService, ToastrMessageType } from 'src/app/services/ui/custom-toastr.service';
+import { CustomToastrService, ToastrMessageType, ToastrPosition } from 'src/app/services/ui/custom-toastr.service';
 
 @Component({
   selector: 'app-register',
@@ -75,10 +74,8 @@ export class RegisterComponent implements OnInit {
     if (result.succeeded) {
       this.customToastrService.message(result.message, "Kullanıcı kaydı başarılı", {
         messageType: ToastrMessageType.Success,
-        position: Position.TopRight
+        position: ToastrPosition.TopRight
       })
-    } else {
-
     }
   }
 
