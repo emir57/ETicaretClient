@@ -76,6 +76,11 @@ export class RegisterComponent implements OnInit {
         messageType: ToastrMessageType.Success,
         position: ToastrPosition.TopRight
       })
+    } else {
+      this.customToastrService.message(result.message, "Hata", {
+        messageType: ToastrMessageType.Error,
+        position: ToastrPosition.TopRight
+      })
     }
   }
 
