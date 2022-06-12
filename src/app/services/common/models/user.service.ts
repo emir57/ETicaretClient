@@ -19,4 +19,12 @@ export class UserService {
     }, user);
     return (await observable.toPromise()) as Create_User;
   }
+
+  async login(user: { usernameOrEmail: string, password: string }): Promise<any> {
+    const observable: Observable<any> = this.httpClientService.post({
+      controller: "users",
+      action: "login",
+    }, user);
+    return await observable.toPromise();
+  }
 }
