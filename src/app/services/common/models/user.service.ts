@@ -25,8 +25,9 @@ export class UserService {
       controller: "users",
       action: "login",
     }, user);
-    await observable.toPromise();
+    const result = await observable.toPromise();
     if (callBackFunction)
       callBackFunction();
+    return result;
   }
 }

@@ -40,10 +40,10 @@ export class LoginComponent extends BaseComponent implements OnInit {
 
   async onSubmit(value: any) {
     this.spinner.show(SpinnerType.BallPulseAsync);
-    const response = await this.userService.login(value, () => {
-      this.spinner.hide();
+    const response: any = await this.userService.login(value, () => {
+      this.spinner.hide(SpinnerType.BallPulseAsync);
     });
-    if (response.succeded) {
+    if (response.succeeded) {
       this.toastrServicE.success(response.message, "Başarılı", {
         positionClass: ToastrPosition.TopRight
       })
