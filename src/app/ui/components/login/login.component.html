@@ -1,1 +1,51 @@
-<p>login works!</p>
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+      <!-- Username Start -->
+      <div class="mb-3">
+        <label for="username" class="form-label">Kullanıcı Adı</label>
+        <input formControlName="username" type="text" class="form-control" placeholder="Kullanıcı Adı" id="username"
+          [ngClass]="{'is-invalid':(username?.dirty || username?.touched)&&username?.errors}"
+          aria-describedby="usernameHelp">
+        <!-- Username Errors Start -->
+        <div *ngIf="(username?.dirty || username?.touched)&&username?.errors" id="firstLastNameHelp"
+          class="form-text text-danger">
+          <div *ngIf="username?.errors?.maxlength">
+            kullanıcı adı maksimum {{username?.errors?.maxlength.requiredLength}} karakter olabilir
+          </div>
+          <div *ngIf="username?.errors?.minlength">
+            kullanıcı adı minimum {{username?.errors?.minlength.requiredLength}} karakter olabilir
+          </div>
+          <div *ngIf="username?.errors?.required">
+            kullanıcı adı boş olamaz
+          </div>
+        </div>
+        <!-- Username Errors End -->
+      </div>
+      <!-- Username End -->
+
+      <!-- Password Start -->
+      <div class="mb-3">
+        <label for="password" class="form-label">Şifre</label>
+        <input formControlName="password" type="password"
+          [ngClass]="{'is-invalid':(password?.dirty || password?.touched)&&password?.errors}" placeholder="Şifre"
+          class="form-control" id="password">
+        <!-- Password Errors Start -->
+        <div *ngIf="(password?.dirty || password?.touched)&&password?.errors" id="firstLastNameHelp"
+          class="form-text text-danger">
+          <div *ngIf="password?.errors?.minlength">
+            şifre minimum {{password?.errors?.minlength.requiredLength}} karakter olabilir
+          </div>
+          <div *ngIf="password?.errors?.required">
+            şifre boş olamaz
+          </div>
+        </div>
+        <!-- Password Errors End -->
+      </div>
+      <!-- Password End -->
+      <button type="submit" class="btn btn-primary">Giriş yap</button>
+    </form>
+  </div>
+  <div class="col-md-3"></div>
+</div>
