@@ -4,8 +4,8 @@
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
       <!-- Username Start -->
       <div class="mb-3">
-        <label for="username" class="form-label">Kullanıcı Adı</label>
-        <input formControlName="username" type="text" class="form-control" placeholder="Kullanıcı Adı" id="username"
+        <label for="username" class="form-label">Kullanıcı Adı Veya Eposta</label>
+        <input formControlName="username" type="text" class="form-control" placeholder="Kullanıcı Adı Veya Eposta" id="username"
           [ngClass]="{'is-invalid':(username?.dirty || username?.touched)&&username?.errors}"
           aria-describedby="usernameHelp">
         <!-- Username Errors Start -->
