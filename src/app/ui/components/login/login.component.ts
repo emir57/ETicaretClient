@@ -28,6 +28,10 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  onSubmit(value: any) {
+
+  }
+
   get password() {
     return this.loginForm.get("password");
   }
