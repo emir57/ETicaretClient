@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { BaseComponent } from 'src/app/base/base.component';
+import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
 import { UserService } from 'src/app/services/common/models/user.service';
 
 @Component({
@@ -36,6 +36,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
   }
 
   async onSubmit(value: any) {
+    this.spinner.show(SpinnerType.BallPulseAsync);
     const response = await this.userService.login(value);
   }
 
