@@ -5,20 +5,21 @@
       <!-- Username Start -->
       <div class="mb-3">
         <label for="username" class="form-label">Kullanıcı Adı Veya Eposta</label>
-        <input formControlName="username" type="text" class="form-control" placeholder="Kullanıcı Adı Veya Eposta" id="username"
-          [ngClass]="{'is-invalid':(username?.dirty || username?.touched)&&username?.errors}"
+        <input formControlName="usernameOrEmail" type="text" class="form-control"
+          placeholder="Kullanıcı Adı Veya Eposta" id="username"
+          [ngClass]="{'is-invalid':(usernameOrEmail?.dirty || usernameOrEmail?.touched)&&usernameOrEmail?.errors}"
           aria-describedby="usernameHelp">
         <!-- Username Errors Start -->
-        <div *ngIf="(username?.dirty || username?.touched)&&username?.errors" id="firstLastNameHelp"
-          class="form-text text-danger">
-          <div *ngIf="username?.errors?.maxlength">
-            kullanıcı adı maksimum {{username?.errors?.maxlength.requiredLength}} karakter olabilir
+        <div *ngIf="(usernameOrEmail?.dirty || usernameOrEmail?.touched)&&usernameOrEmail?.errors"
+          id="firstLastNameHelp" class="form-text text-danger">
+          <div *ngIf="usernameOrEmail?.errors?.maxlength">
+            kullanıcı adı veya eposta maksimum {{usernameOrEmail?.errors?.maxlength.requiredLength}} karakter olabilir
           </div>
-          <div *ngIf="username?.errors?.minlength">
-            kullanıcı adı minimum {{username?.errors?.minlength.requiredLength}} karakter olabilir
+          <div *ngIf="usernameOrEmail?.errors?.minlength">
+            kullanıcı adı veya eposta minimum {{usernameOrEmail?.errors?.minlength.requiredLength}} karakter olabilir
           </div>
-          <div *ngIf="username?.errors?.required">
-            kullanıcı adı boş olamaz
+          <div *ngIf="usernameOrEmail?.errors?.required">
+            kullanıcı adı veya eposta boş olamaz
           </div>
         </div>
         <!-- Username Errors End -->

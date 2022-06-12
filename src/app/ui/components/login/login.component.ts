@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   createLoginForm() {
     this.loginForm = this.formBuilder.group({
-      username: ["", [
+      usernameOrEmail: ["", [
         Validators.required,
         Validators.maxLength(50), Validators.minLength(3)]],
       password: ["", [
@@ -35,8 +35,8 @@ export class LoginComponent implements OnInit {
   get password() {
     return this.loginForm.get("password");
   }
-  get username() {
-    return this.loginForm.get("username");
+  get usernameOrEmail() {
+    return this.loginForm.get("usernameOrEmail");
   }
 
 }
