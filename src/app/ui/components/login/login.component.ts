@@ -18,7 +18,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
     private formBuilder: FormBuilder,
     private userService: UserService,
     public spinner: NgxSpinnerService,
-    private toastrServicE: ToastrService
+    private toastrService: ToastrService
   ) {
     super(spinner);
   }
@@ -44,11 +44,11 @@ export class LoginComponent extends BaseComponent implements OnInit {
       this.spinner.hide(SpinnerType.BallPulseAsync);
     });
     if (response.succeeded) {
-      this.toastrServicE.success(response.message, "Başarılı", {
+      this.toastrService.success(response.message, "Başarılı", {
         positionClass: ToastrPosition.TopRight
       })
     } else {
-      this.toastrServicE.error(response.message, "Başarısız", {
+      this.toastrService.error(response.message, "Başarısız", {
         positionClass: ToastrPosition.TopRight
       })
     }
