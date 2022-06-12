@@ -40,7 +40,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
 
   async onSubmit(value: any) {
     this.spinner.show(SpinnerType.BallPulseAsync);
-    const response: any = await this.userService.login(value, () => {
+    const response = await this.userService.login(value, () => {
       this.spinner.hide(SpinnerType.BallPulseAsync);
     });
     if (response.succeeded) {
