@@ -30,6 +30,10 @@ export class UserService {
     const result = await observable.toPromise();
     if (callBackFunction)
       callBackFunction();
+    if ((result as LoginReturnValue).token) {
+      localStorage.setItem("accessToken", (result as LoginReturnValue).token.accessToken);
+      //localStorage.setItem("expiration", (result as LoginReturnValue).token.expiration.toString());
+    }
     return result as LoginReturnValue;
   }
 }
