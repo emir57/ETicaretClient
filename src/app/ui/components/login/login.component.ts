@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
 import { UserService } from 'src/app/services/common/models/user.service';
+import { ToastrPosition } from 'src/app/services/ui/custom-toastr.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,8 @@ export class LoginComponent extends BaseComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
-    public spinner: NgxSpinnerService
+    public spinner: NgxSpinnerService,
+    private toastrServicE: ToastrService
   ) {
     super(spinner);
   }
@@ -40,6 +43,15 @@ export class LoginComponent extends BaseComponent implements OnInit {
     const response = await this.userService.login(value, () => {
       this.spinner.hide();
     });
+    if (response.succeded) {
+      this.toastrServicE.success(response.message, "Başarılı", {
+        positionClass: ToastrPosition.TopRight
+      })
+    } else {
+      this.toastrServicE.error(response.message, "Başarısız", {
+        positionClass: ToastrPosition.TopRight
+      })
+    }
   }
 
   get password() {
