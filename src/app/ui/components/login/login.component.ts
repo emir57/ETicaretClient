@@ -53,9 +53,10 @@ export class LoginComponent extends BaseComponent implements OnInit {
       this.toastrService.success(response.message, "Başarılı", {
         positionClass: ToastrPosition.TopRight
       })
-      this.activatedRoute.params.subscribe(param => {
-        if (param["returnUrl"]) {
-          this.router.navigateByUrl(param["returnUrl"]);
+      this.activatedRoute.queryParams.subscribe(param => {
+        const returnUrl = param["returnUrl"];
+        if (returnUrl) {
+          this.router.navigate([returnUrl]);
         }
       })
     } else {
