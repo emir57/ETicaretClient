@@ -11,13 +11,18 @@ declare var $: any;
 })
 export class AppComponent {
 
-  constructor(public authService: AuthService) {
+  constructor(public authService: AuthService,
+    private toastrService: CustomToastrService) {
     authService.identityCheck();
   }
 
   signOut() {
     localStorage.removeItem("accessToken");
     this.authService.identityCheck();
+    this.toastrService.message("Oturum kapatılmıştır", "Oturum Kapatıldı", {
+      messageType: ToastrMessageType.Success,
+      position: ToastrPosition.TopRight
+    })
   }
 }
 
