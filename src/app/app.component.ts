@@ -14,5 +14,10 @@ export class AppComponent {
   constructor(public authService: AuthService) {
     authService.identityCheck();
   }
+
+  signOut() {
+    localStorage.removeItem("accessToken");
+    this.authService.identityCheck();
+  }
 }
 
