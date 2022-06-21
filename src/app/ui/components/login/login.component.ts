@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
@@ -20,7 +21,9 @@ export class LoginComponent extends BaseComponent implements OnInit {
     private userService: UserService,
     public spinner: NgxSpinnerService,
     private toastrService: ToastrService,
-    private authService: AuthService
+    private authService: AuthService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {
     super(spinner);
   }
@@ -49,6 +52,11 @@ export class LoginComponent extends BaseComponent implements OnInit {
       this.authService.identityCheck();
       this.toastrService.success(response.message, "Başarılı", {
         positionClass: ToastrPosition.TopRight
+      })
+      this.activatedRoute.params.subscribe(param => {
+        if (param["returnUrl"]) {
+          this.router.navigateByUrl(param["returnUrl"]);
+        }
       })
     } else {
       this.toastrService.error(response.message, "Başarısız", {
