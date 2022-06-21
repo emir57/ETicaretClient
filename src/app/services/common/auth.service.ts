@@ -12,12 +12,13 @@ export class AuthService {
 
   identityCheck() {
     const token: string = localStorage.getItem("accessToken") as string;
-    let isExpired: boolean;
+    let expired: boolean;
     try {
-      isExpired = this.jwtHelper.isTokenExpired(token);
+      expired = this.jwtHelper.isTokenExpired(token);
     } catch {
-      isExpired = true;
+      expired = true;
     }
+    _isAuthenticated = token != null && !expired;
   }
 }
 
