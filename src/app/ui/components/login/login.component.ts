@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
+import { AuthService } from 'src/app/services/common/auth.service';
 import { UserService } from 'src/app/services/common/models/user.service';
 import { ToastrPosition } from 'src/app/services/ui/custom-toastr.service';
 
@@ -18,7 +19,8 @@ export class LoginComponent extends BaseComponent implements OnInit {
     private formBuilder: FormBuilder,
     private userService: UserService,
     public spinner: NgxSpinnerService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private authService: AuthService
   ) {
     super(spinner);
   }
@@ -44,6 +46,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
       this.spinner.hide(SpinnerType.BallPulseAsync);
     });
     if (response.succeeded) {
+      this.authService.identityCheck();
       this.toastrService.success(response.message, "Başarılı", {
         positionClass: ToastrPosition.TopRight
       })
