@@ -4,6 +4,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Observable } from 'rxjs';
 import { SpinnerType } from 'src/app/base/base.component';
+import { AuthService, _isAuthenticated } from 'src/app/services/common/auth.service';
 import { CustomToastrService, ToastrMessageType, ToastrPosition } from 'src/app/services/ui/custom-toastr.service';
 
 @Injectable({
@@ -20,18 +21,10 @@ export class AuthGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     this.spinner.show(SpinnerType.BallPulseAsync);
-    const token: string = localStorage.getItem("accessToken") as string;
-
     //const decodeToken = this.jwtHelper.decodeToken(token);
     //const expirationDate: Date | null = this.jwtHelper.getTokenExpirationDate(token);
-    let isExpired: boolean;
-    try {
-      isExpired = this.jwtHelper.isTokenExpired(token);
-    } catch {
-      isExpired = true;
-    }
-    console.log(isExpired)
-    if (!token || isExpired) {
+
+    if (_isAuthenticated) {
       this.router.navigate(["login"], { queryParams: { returnUrl: state.url } });
       this.toastrService.message("Oturum açmanız gerekiyor", "Yetkisiz Erişim", {
         messageType: ToastrMessageType.Warning,
