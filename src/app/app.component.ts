@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from './services/common/auth.service';
@@ -13,8 +12,7 @@ declare var $: any;
 export class AppComponent {
 
   constructor(public authService: AuthService,
-    private toastrService: CustomToastrService,
-    private router: Router) {
+    private toastrService: CustomToastrService) {
     authService.identityCheck();
   }
 
@@ -24,8 +22,7 @@ export class AppComponent {
     this.toastrService.message("Oturum kapatılmıştır", "Oturum Kapatıldı", {
       messageType: ToastrMessageType.Success,
       position: ToastrPosition.TopRight
-    });
-    this.router.navigate(["login"]);
+    })
   }
 }
 
