@@ -1,5 +1,6 @@
 import { SocialUser } from '@abacritt/angularx-social-login';
 import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { firstValueFrom, Observable } from 'rxjs';
 import { LoginReturnValue } from 'src/app/contracts/loginReturnValue';
 import { Token } from 'src/app/contracts/token/token';
@@ -13,7 +14,8 @@ import { HttpClientService } from '../http-client.service';
 export class UserService {
 
   constructor(
-    private httpClientService: HttpClientService
+    private httpClientService: HttpClientService,
+    private toastrService: ToastrService
   ) { }
 
   async create(user: User): Promise<Create_User> {
@@ -38,14 +40,18 @@ export class UserService {
     return result as LoginReturnValue;
   }
 
-  async googleLogin(user: SocialUser) {
+  async googleLogin(user: SocialUser, callBackFunction?: () => void) {
     const observable: Observable<SocialUser | LoginReturnValue> = this.httpClientService.post<SocialUser | LoginReturnValue>({
       action: "GoogleLogin",
       controller: "users"
     }, user);
     const tokenResponse: LoginReturnValue = await firstValueFrom(observable) as LoginReturnValue;
-    if (tokenResponse)
+    if (tokenResponse) {
       localStorage.setItem("accessToken", tokenResponse.token.accessToken);
+      this.toastrService.success("Google üzerinden giriş başarıyla sağlanmıştır", "Giriş Başarılı");
+    }
+    if (callBackFunction)
+      callBackFunction();
   }
 
 }
