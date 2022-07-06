@@ -5,7 +5,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
+import { Token } from 'src/app/contracts/token/token';
 import { AuthService } from 'src/app/services/common/auth.service';
+import { HttpClientService } from 'src/app/services/common/http-client.service';
 import { UserService } from 'src/app/services/common/models/user.service';
 import { ToastrPosition } from 'src/app/services/ui/custom-toastr.service';
 
@@ -25,11 +27,17 @@ export class LoginComponent extends BaseComponent implements OnInit {
     private authService: AuthService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private socialAuthService: SocialAuthService
+    private socialAuthService: SocialAuthService,
+    private httpClientService: HttpClientService
   ) {
     super(spinner);
     this.socialAuthService.authState.subscribe((user: SocialUser) => {
       console.log(user);
+      this.httpClientService.post<SocialUser | Token>({
+        action: "GoogleLogin",
+        controller: "users"
+      }, user);
+
     })
   }
 
