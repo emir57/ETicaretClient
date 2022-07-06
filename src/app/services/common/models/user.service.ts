@@ -6,6 +6,7 @@ import { LoginReturnValue } from 'src/app/contracts/loginReturnValue';
 import { Token } from 'src/app/contracts/token/token';
 import { Create_User } from 'src/app/contracts/users/create_user';
 import { User } from 'src/app/entities/user';
+import { AuthService } from '../auth.service';
 import { HttpClientService } from '../http-client.service';
 
 @Injectable({
@@ -15,7 +16,8 @@ export class UserService {
 
   constructor(
     private httpClientService: HttpClientService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private authService: AuthService
   ) { }
 
   async create(user: User): Promise<Create_User> {
@@ -48,6 +50,7 @@ export class UserService {
     const tokenResponse: LoginReturnValue = await firstValueFrom(observable) as LoginReturnValue;
     if (tokenResponse) {
       localStorage.setItem("accessToken", tokenResponse.token.accessToken);
+      this.authService.identityCheck();
       this.toastrService.success("Google üzerinden giriş başarıyla sağlanmıştır", "Giriş Başarılı");
     }
     if (callBackFunction)
