@@ -60,7 +60,7 @@ import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 
             provider: new GoogleLoginProvider('clientId')
           }
         ],
-        onError: (err) => {
+        onError: (err: any) => {
           console.error(err);
         }
       } as SocialAuthServiceConfig,
