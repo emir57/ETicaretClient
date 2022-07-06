@@ -16,7 +16,7 @@ import { FileUploadDialogComponent } from './dialogs/file-upload-dialog/file-upl
 import { JwtModule } from '@auth0/angular-jwt';
 import { LoginComponent } from './ui/components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,10 +39,32 @@ import { ReactiveFormsModule } from '@angular/forms';
         tokenGetter: () => localStorage.getItem("accessToken"),
         allowedDomains: ["localhost:44392"]
       }
-    })
+    }),
+    SocialLoginModule
   ],
   providers: [
     { provide: "baseUrl", useValue: "https://localhost:44392/api", multi: true },
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              'clientId'
+            )
+          },
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider('clientId')
+          }
+        ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig,
+    }
   ],
   bootstrap: [AppComponent]
 })
