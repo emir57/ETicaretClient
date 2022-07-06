@@ -28,16 +28,12 @@ export class LoginComponent extends BaseComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private socialAuthService: SocialAuthService,
-    private httpClientService: HttpClientService
   ) {
     super(spinner);
-    this.socialAuthService.authState.subscribe((user: SocialUser) => {
+    this.socialAuthService.authState.subscribe(async (user: SocialUser) => {
+      this.showSpinner(SpinnerType.BallAtom);
       console.log(user);
-      this.httpClientService.post<SocialUser | Token>({
-        action: "GoogleLogin",
-        controller: "users"
-      }, user);
-
+      await this.userService.googleLogin(user, () => this.hideSpinner(SpinnerType.BallAtom));
     })
   }
 
