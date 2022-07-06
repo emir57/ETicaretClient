@@ -1,3 +1,4 @@
+import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -23,9 +24,13 @@ export class LoginComponent extends BaseComponent implements OnInit {
     private toastrService: ToastrService,
     private authService: AuthService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private socialAuthService: SocialAuthService
   ) {
     super(spinner);
+    this.socialAuthService.authState.subscribe((user: SocialUser) => {
+      console.log(user);
+    })
   }
 
   ngOnInit(): void {
