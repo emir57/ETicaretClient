@@ -43,11 +43,28 @@ import {
         tokenGetter: () => localStorage.getItem("accessToken"),
         allowedDomains: ["localhost:44392"]
       }
-    })
+    }),
+    SocialLoginModule
   ],
   providers: [
     { provide: "baseUrl", useValue: "https://localhost:44392/api", multi: true },
-
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '935630960852-j5a1ect8utc4lsdl888d5c63fupctqb4.apps.googleusercontent.com'
+            )
+          }
+        ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig,
+    }
   ],
   bootstrap: [AppComponent]
 })
