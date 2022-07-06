@@ -14,10 +14,12 @@ import { FileUploadComponent } from './services/common/file-upload/file-upload.c
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { FileUploadDialogComponent } from './dialogs/file-upload-dialog/file-upload-dialog.component';
 import { JwtModule } from '@auth0/angular-jwt';
+import { LoginComponent } from './ui/components/login/login.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
