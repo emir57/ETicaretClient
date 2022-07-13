@@ -1,4 +1,4 @@
-import { FacebookLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
+import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/services/common/auth.service';
 import { HttpClientService } from 'src/app/services/common/http-client.service';
 import { UserService } from 'src/app/services/common/models/user.service';
 import { ToastrPosition } from 'src/app/services/ui/custom-toastr.service';
+import { FacebookLoginProvider } from "@abacritt/angularx-social-login";
 
 @Component({
   selector: 'app-login',
@@ -59,7 +60,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
     })
   }
 
-  async facebookLogin() {
+  signInWithFB() {
     this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
 
