@@ -11,7 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { LoginComponent } from './ui/components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
+import { SocialLoginModule, SocialAuthServiceConfig, SocialAuthService } from '@abacritt/angularx-social-login';
 import {
   GoogleLoginProvider,
   FacebookLoginProvider
@@ -57,14 +57,15 @@ import {
           },
           {
             id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('1428402380915765')
+            provider: new FacebookLoginProvider('1428402380915765',)
           }
         ],
         onError: (err) => {
           console.error(err);
         }
       } as SocialAuthServiceConfig,
-    }
+    },
+    SocialAuthService
   ],
   bootstrap: [AppComponent]
 })
