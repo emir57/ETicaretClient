@@ -58,6 +58,10 @@ import {
             provider: new GoogleLoginProvider(
               '935630960852-j5a1ect8utc4lsdl888d5c63fupctqb4.apps.googleusercontent.com'
             )
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('clientId')
           }
         ],
         onError: (err) => {
