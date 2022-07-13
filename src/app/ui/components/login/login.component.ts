@@ -58,6 +58,10 @@ export class LoginComponent extends BaseComponent implements OnInit {
     })
   }
 
+  async facebookLogin() {
+
+  }
+
   async onSubmit(value: any) {
     this.spinner.show(SpinnerType.BallPulseAsync);
     const response = await this.userService.login(value, () => {
