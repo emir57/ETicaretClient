@@ -38,6 +38,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
           await this.userService.googleLogin(user, () => this.hideSpinner(SpinnerType.BallAtom));
           break;
         case "FACEBOOK":
+          await this.userService.facebookLogin(user, () => this.hideSpinner(SpinnerType.BallAtom));
           break;
       }
     })
