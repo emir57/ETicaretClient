@@ -1,4 +1,4 @@
-import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
+import { FacebookLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -59,7 +59,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
   }
 
   async facebookLogin() {
-
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
 
   async onSubmit(value: any) {
