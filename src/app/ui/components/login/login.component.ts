@@ -11,6 +11,7 @@ import { HttpClientService } from 'src/app/services/common/http-client.service';
 import { UserService } from 'src/app/services/common/models/user.service';
 import { ToastrPosition } from 'src/app/services/ui/custom-toastr.service';
 import { FacebookLoginProvider } from "@abacritt/angularx-social-login";
+import { UserAuthService } from 'src/app/services/common/models/user-auth.service';
 
 @Component({
   selector: 'app-login',
@@ -29,6 +30,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private socialAuthService: SocialAuthService,
+    private userAuthService: UserAuthService
   ) {
     super(spinner);
     this.socialAuthService.authState.subscribe(async (user: SocialUser) => {
@@ -36,10 +38,10 @@ export class LoginComponent extends BaseComponent implements OnInit {
       console.log(user);
       switch (user.provider) {
         case "GOOGLE":
-          await this.userService.googleLogin(user, () => this.hideSpinner(SpinnerType.BallAtom));
+          await this.userAuthService.googleLogin(user, () => this.hideSpinner(SpinnerType.BallAtom));
           break;
         case "FACEBOOK":
-          await this.userService.facebookLogin(user, () => this.hideSpinner(SpinnerType.BallAtom));
+          await this.userAuthService.facebookLogin(user, () => this.hideSpinner(SpinnerType.BallAtom));
           break;
       }
     })
@@ -66,7 +68,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
 
   async onSubmit(value: any) {
     this.spinner.show(SpinnerType.BallPulseAsync);
-    const response = await this.userService.login(value, () => {
+    const response = await this.userAuthService.login(value, () => {
       this.spinner.hide(SpinnerType.BallPulseAsync);
     });
     if (response.succeeded) {
