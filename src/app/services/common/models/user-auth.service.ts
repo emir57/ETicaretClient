@@ -20,7 +20,7 @@ export class UserAuthService {
 
   async login(user: { usernameOrEmail: string, password: string }, callBackFunction?: () => void): Promise<LoginReturnValue> {
     const observable: Observable<LoginReturnValue | User> = this.httpClientService.post<LoginReturnValue | User>({
-      controller: "users",
+      controller: "auth",
       action: "login",
     }, user);
     const result = await firstValueFrom(observable);
@@ -36,7 +36,7 @@ export class UserAuthService {
   async googleLogin(user: SocialUser, callBackFunction?: () => void) {
     const observable: Observable<SocialUser | LoginReturnValue> = this.httpClientService.post<SocialUser | LoginReturnValue>({
       action: "GoogleLogin",
-      controller: "users"
+      controller: "auth"
     }, user);
     const tokenResponse: LoginReturnValue = await firstValueFrom(observable) as LoginReturnValue;
     if (tokenResponse) {
@@ -50,7 +50,7 @@ export class UserAuthService {
 
   async facebookLogin(user: SocialUser, callbackFunction?: () => void): Promise<any> {
     const observable: Observable<SocialUser | LoginReturnValue> = this.httpClientService.post<SocialUser | LoginReturnValue>({
-      controller: "users",
+      controller: "auth",
       action: "FacebookLogin",
     }, user);
     const tokenResponse: LoginReturnValue = await firstValueFrom(observable) as LoginReturnValue;
