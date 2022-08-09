@@ -28,6 +28,7 @@ export class UserAuthService {
       callBackFunction();
     if ((result as LoginReturnValue).token) {
       localStorage.setItem("accessToken", (result as LoginReturnValue).token.accessToken);
+      localStorage.setItem("refreshToken", (result as LoginReturnValue).token.refreshToken);
       //localStorage.setItem("expiration", (result as LoginReturnValue).token.expiration.toString());
     }
     return result as LoginReturnValue;
@@ -41,6 +42,7 @@ export class UserAuthService {
     const tokenResponse: LoginReturnValue = await firstValueFrom(observable) as LoginReturnValue;
     if (tokenResponse) {
       localStorage.setItem("accessToken", tokenResponse.token.accessToken);
+      localStorage.setItem("refreshToken", tokenResponse.token.refreshToken);
       this.authService.identityCheck();
       this.toastrService.success("Google üzerinden giriş başarıyla sağlanmıştır", "Giriş Başarılı");
     }
@@ -56,6 +58,7 @@ export class UserAuthService {
     const tokenResponse: LoginReturnValue = await firstValueFrom(observable) as LoginReturnValue;
     if (tokenResponse) {
       localStorage.setItem("accessToken", tokenResponse.token.accessToken);
+      localStorage.setItem("refreshToken", tokenResponse.token.refreshToken);
       this.authService.identityCheck();
       this.toastrService.success("Facebook üzerindne giriş başarıyla sağlanmıştır", "Giriş Başarılı");
     }
