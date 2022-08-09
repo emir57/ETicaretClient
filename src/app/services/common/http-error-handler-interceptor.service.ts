@@ -2,6 +2,7 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpStatusCode } 
 import { Injectable } from '@angular/core';
 import { catchError, Observable, of } from 'rxjs';
 import { CustomToastrService, ToastrMessageType } from '../ui/custom-toastr.service';
+import { UserAuthService } from './models/user-auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,8 @@ import { CustomToastrService, ToastrMessageType } from '../ui/custom-toastr.serv
 export class HttpErrorHandlerInterceptorService implements HttpInterceptor {
 
   constructor(
-    private toastrService: CustomToastrService
+    private toastrService: CustomToastrService,
+    private userAuthService: UserAuthService
   ) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -18,6 +20,9 @@ export class HttpErrorHandlerInterceptorService implements HttpInterceptor {
         case HttpStatusCode.Unauthorized:
           this.toastrService.message("Yetkisiz işlem", "Hata", {
             messageType: ToastrMessageType.Warning
+          });
+          this.userAuthService.refreshTokenLogin(localStorage.getItem("refreshToken") as string).then(data => {
+
           });
           break;
         case HttpStatusCode.InternalServerError:

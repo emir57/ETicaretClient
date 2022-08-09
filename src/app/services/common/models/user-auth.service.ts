@@ -34,7 +34,7 @@ export class UserAuthService {
     return result as LoginReturnValue;
   }
 
-  async refreshTokenLogin(refreshToken: string, callBackFunction: () => void) {
+  async refreshTokenLogin(refreshToken: string, callBackFunction?: () => void): Promise<any> {
     const observable: Observable<any | LoginReturnValue> = this.httpClientService.post({
       action: "RefreshTokenLogin",
       controller: "auth",
