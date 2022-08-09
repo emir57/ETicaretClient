@@ -34,6 +34,21 @@ export class UserAuthService {
     return result as LoginReturnValue;
   }
 
+  async refreshTokenLogin(refreshToken: string, callBackFunction: () => void) {
+    const observable: Observable<any | LoginReturnValue> = this.httpClientService.post({
+      action: "RefreshTokenLogin",
+      controller: "auth",
+    }, { refreshToken: refreshToken });
+
+    const tokenResponse: LoginReturnValue = await firstValueFrom(observable);
+    if (tokenResponse) {
+      localStorage.setItem("accessToken", tokenResponse.token.accessToken);
+      localStorage.setItem("refreshToken", tokenResponse.token.refreshToken);
+    }
+    if (callBackFunction)
+      callBackFunction();
+  }
+
   async googleLogin(user: SocialUser, callBackFunction?: () => void) {
     const observable: Observable<SocialUser | LoginReturnValue> = this.httpClientService.post<SocialUser | LoginReturnValue>({
       action: "GoogleLogin",
