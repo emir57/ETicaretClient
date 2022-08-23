@@ -44,7 +44,7 @@ import { HttpErrorHandlerInterceptorService } from './services/common/http-error
     SocialLoginModule
   ],
   providers: [
-    { provide: "baseUrl", useValue: "https://localhost:44392/api", multi: true },
+    { provide: "baseUrl", useValue: "https://localhost:5001/api", multi: true },
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
